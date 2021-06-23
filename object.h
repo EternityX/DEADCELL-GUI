@@ -17,6 +17,7 @@ namespace deadcell::gui {
 
     public:
         virtual ~object();
+        virtual void draw();
 
         void add_child(const std::shared_ptr<object> &object);
         void remove_child(const std::shared_ptr<object> &object);

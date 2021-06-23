@@ -23,6 +23,10 @@ namespace deadcell::gui {
         }
     }
 
+    void object::draw() {
+
+    }
+
     void object::add_child(const std::shared_ptr<object> &object) {
         object->parent_ = shared_from_this();
         children_.emplace(children_.begin(), object);

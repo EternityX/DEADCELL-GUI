@@ -11,5 +11,7 @@ namespace deadcell::gui {
         window();
 
         bool is_visible() const;
+
+        void draw() override;
     };
 }

@@ -8,4 +8,8 @@ namespace deadcell::gui {
     bool window::is_visible() const {
 		return visible_;
     }
+
+    void window::draw() {
+
+    }
 }
