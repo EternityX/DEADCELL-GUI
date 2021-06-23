@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../object.h"
+#include "../controls/object.h"
 
 namespace deadcell::gui {
     class window : public object {
