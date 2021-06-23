@@ -22,6 +22,7 @@
     <ClCompile Include="controls\button.cpp" />
     <ClCompile Include="controls\window.cpp" />
     <ClCompile Include="extra\window_manager.cpp" />
+    <ClCompile Include="gui.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="wrapped\drawing.cpp" />
   </ItemGroup>
