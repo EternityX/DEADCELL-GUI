@@ -1,6 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="object.cpp" />
+    <ClCompile Include="wrapped\drawing.cpp">
+      <Filter>wrapped</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="object.h" />
+    <ClInclude Include="layout.h" />
+    <ClInclude Include="gui.h" />
+    <ClInclude Include="wrapped\drawing.h">
+      <Filter>wrapped</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="controls">
+      <UniqueIdentifier>{fc171e6b-52c7-430e-9b83-a8f357ea401b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extra">
+      <UniqueIdentifier>{291405e3-ab20-4f15-a566-16df58582f76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wrapped">
+      <UniqueIdentifier>{62be3f79-1042-4c80-a71e-4951408d57c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
