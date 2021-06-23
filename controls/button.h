@@ -5,7 +5,7 @@
 namespace deadcell::gui {
     class button : public object {
     private:
-        bool visible_;
+        bool visible_ = true;
 
     public:
         button();
