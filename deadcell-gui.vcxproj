@@ -21,12 +21,14 @@
   <ItemGroup>
     <ClCompile Include="controls\button.cpp" />
     <ClCompile Include="controls\window.cpp" />
+    <ClCompile Include="extra\window_manager.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="wrapped\drawing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controls\button.h" />
     <ClInclude Include="controls\window.h" />
+    <ClInclude Include="extra\window_manager.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="gui.h" />
     <ClInclude Include="thirdparty\layout.h" />

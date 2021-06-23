@@ -11,6 +11,9 @@
     <ClCompile Include="controls\window.cpp">
       <Filter>controls</Filter>
     </ClCompile>
+    <ClCompile Include="extra\window_manager.cpp">
+      <Filter>extra</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="object.h" />
@@ -26,6 +29,9 @@
     </ClInclude>
     <ClInclude Include="controls\window.h">
       <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="extra\window_manager.h">
+      <Filter>extra</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
