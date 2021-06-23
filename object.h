@@ -20,5 +20,6 @@ namespace deadcell::gui {
 
         void add_child(const std::shared_ptr<object> &object);
         void remove_child(const std::shared_ptr<object> &object);
+        std::shared_ptr<object> get_child(const std::shared_ptr<object> &object);
     };
 }

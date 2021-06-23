@@ -30,14 +30,23 @@ namespace deadcell::gui {
 
     void object::remove_child(const std::shared_ptr<object> &object) {
         for (size_t i = 0; i < children_.size(); ++i) {
-
-            auto &element = children_.at(i);
-            if (element != object) {
+            auto &child = children_.at(i);
+            if (child != object) {
                 continue;
             }
 
-            element->parent_ = nullptr;
+            child->parent_ = nullptr;
             children_.erase(children_.begin() + i);
         }
+    }
+
+    std::shared_ptr<object> object::get_child(const std::shared_ptr<object> &object) {
+        for (auto &child : children_) {
+            if (child == object) {
+                return child;
+            }
+        }
+
+        return nullptr;
     }
 }
