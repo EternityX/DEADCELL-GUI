@@ -25,7 +25,7 @@
   <ItemGroup>
     <ClInclude Include="object.h" />
     <ClInclude Include="gui.h" />
-    <ClInclude Include="layout.h" />
+    <ClInclude Include="thirdparty\layout.h" />
     <ClInclude Include="wrapped\drawing.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -8,10 +8,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="object.h" />
-    <ClInclude Include="layout.h" />
     <ClInclude Include="gui.h" />
     <ClInclude Include="wrapped\drawing.h">
       <Filter>wrapped</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdparty\layout.h">
+      <Filter>thirdparty</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -23,6 +25,9 @@
     </Filter>
     <Filter Include="wrapped">
       <UniqueIdentifier>{62be3f79-1042-4c80-a71e-4951408d57c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty">
+      <UniqueIdentifier>{2fe88c64-452b-4be9-9c1d-c33b2f91b4e4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
