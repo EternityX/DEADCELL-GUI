@@ -5,6 +5,12 @@
     <ClCompile Include="wrapped\drawing.cpp">
       <Filter>wrapped</Filter>
     </ClCompile>
+    <ClCompile Include="controls\button.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="controls\window.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="object.h" />
@@ -14,6 +20,12 @@
     </ClInclude>
     <ClInclude Include="thirdparty\layout.h">
       <Filter>thirdparty</Filter>
+    </ClInclude>
+    <ClInclude Include="controls\button.h">
+      <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="controls\window.h">
+      <Filter>controls</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
