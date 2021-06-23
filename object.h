@@ -1,9 +1,6 @@
 #pragma once
 
-#include "gui.h"
-
 #include <memory>
-#include <string>
 #include <vector>
 
 namespace deadcell::gui {
