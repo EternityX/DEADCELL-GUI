@@ -10,6 +10,8 @@ namespace deadcell::gui {
         std::shared_ptr<window> active_window_;
         std::vector<std::shared_ptr<window>> windows_;
 
+        ImVec2 last_mouse_pos_;
+
         void process_mouse();
         void render();
 
@@ -18,7 +20,7 @@ namespace deadcell::gui {
         void remove_window(const window_ptr &win);
         void set_active_window(const window_ptr &win);
         void move_to_front(const window_ptr &win, bool make_active);
-        void handle_drag();
+        window_ptr get_window_under_cursor();    
 
         void new_frame();
         void end_frame();

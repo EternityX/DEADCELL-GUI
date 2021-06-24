@@ -37,9 +37,11 @@ namespace deadcell::gui {
     private:
     public:
         enum type_e {
-            drag_start,
-            drag_stop,
-            drag_move,
+            mouse_move,
+            left_mouse_down,
+            left_mouse_up,
+            right_mouse_down,
+            right_mouse_up
         };
 
         window_event(const type_e type)

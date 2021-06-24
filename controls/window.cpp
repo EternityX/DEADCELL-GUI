@@ -1,5 +1,7 @@
 #include "window.h"
 
+#include <algorithm>
+
 #include "../wrapped/drawing.h"
 
 namespace deadcell::gui {
@@ -7,23 +9,31 @@ namespace deadcell::gui {
 
 	}
 
-    void window::set_min_max(const ImVec2 min, const ImVec2 max) {
-        min_ = min;
-        max_ = max;
+    void window::handle_drag_move_event() {
+      
     }
-
-    bool window::is_visible() const {
-		return visible_;
-    }
-
-    void window::handle_drag_event() {
-	    
-	}
 
     void window::event(const base_event &e) {
-        if (e.type() == window_event::drag_start) {
-            handle_drag_event();
+        const auto &io = ImGui::GetIO();
+
+        if (io.MousePos.x != last_mouse_pos_.x || io.MousePos.y != last_mouse_pos_.y) {
+            if (dragging_) {
+                min_ = min_ + (io.MousePos - drag_start_);
+            }
         }
+
+        if (e.type() == window_event::left_mouse_down) {
+            dragging_ = true;
+            drag_start_ = { io.MousePos.x, io.MousePos.y };
+        }
+
+        if (e.type() == window_event::left_mouse_up) {
+            if (dragging_) {
+                dragging_ = false;
+            }
+        }
+
+        last_mouse_pos_ = io.MousePos;
     }
 
     void window::render() {
