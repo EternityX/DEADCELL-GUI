@@ -5,9 +5,9 @@
 #include "../wrapped/drawing.h"
 
 namespace deadcell::gui {
-	window::window() {
+    window::window() {
 
-	}
+    }
 
     void window::handle_drag_move_event() {
       
