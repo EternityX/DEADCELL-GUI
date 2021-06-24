@@ -3,10 +3,10 @@
 #include "../controls/window.h"
 
 namespace deadcell::gui {
-    using window_ptr = std::shared_ptr<window>;
-
     class window_manager {
     private:
+        using window_ptr = std::shared_ptr<window>;
+
         std::shared_ptr<window> active_window_;
         std::vector<std::shared_ptr<window>> windows_;
 

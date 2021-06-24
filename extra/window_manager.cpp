@@ -41,7 +41,7 @@ namespace deadcell::gui {
         }
     }
 
-    window_ptr window_manager::get_window_under_cursor() {
+    std::shared_ptr<window> window_manager::get_window_under_cursor() {
         const auto &io = ImGui::GetIO();
 
         std::deque<window_ptr> windows;

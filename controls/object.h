@@ -42,6 +42,8 @@ namespace deadcell::gui {
         void remove_from_parent();
         std::shared_ptr<object> get_child(const object_ptr &object);
         std::vector<object_ptr> get_children() const;
+        bool is_ancestor(const object_ptr &object);
+
         std::string build_class_tree();
     };
 }
