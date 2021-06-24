@@ -10,8 +10,12 @@ namespace deadcell::gui {
         ImVec2 min_;
         ImVec2 max_;
         ImVec2 last_mouse_pos_;
+
+    protected:
+        std::string unique_id_;
+
     public:
-        window();
+        window(std::string_view unique_id);
 
         bool dragging_ = false;
         ImVec2 drag_start_;
@@ -59,5 +63,6 @@ namespace deadcell::gui {
 
         void event(const base_event &e) override;
         void render() override;
+        std::string get_class_name() override { return "window()"; }
     };
 }

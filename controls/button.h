@@ -7,9 +7,14 @@ namespace deadcell::gui {
     private:
         bool visible_ = true;
 
+    protected:
+        std::string unique_id_;
+
     public:
-        button();
+        button(std::string_view unique_id);
 
         bool is_visible() const;
+
+        std::string get_class_name() override { return "button()"; }
     };
 }

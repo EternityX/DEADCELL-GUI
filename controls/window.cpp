@@ -1,12 +1,10 @@
 #include "window.h"
 
-#include <algorithm>
-
 #include "../wrapped/drawing.h"
 
 namespace deadcell::gui {
-    window::window() {
-
+    window::window(const std::string_view unique_id) {
+        unique_ids_.insert(std::pair(unique_id, this));
     }
 
     void window::event(const base_event &e) {
