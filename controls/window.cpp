@@ -12,6 +12,7 @@ namespace deadcell::gui {
     void window::event(const base_event &e) {
         const auto &io = ImGui::GetIO();
 
+        // NOLINT(clang-diagnostic-float-equal)
         if (io.MousePos.x != last_mouse_pos_.x || io.MousePos.y != last_mouse_pos_.y) {
             if (dragging_) {
                 min_ = min_ + (io.MousePos - drag_start_);
