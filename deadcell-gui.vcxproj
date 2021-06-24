@@ -22,6 +22,8 @@
     <ClCompile Include="controls\button.cpp" />
     <ClCompile Include="controls\object.cpp" />
     <ClCompile Include="controls\window.cpp" />
+    <ClCompile Include="extra\event.cpp" />
+    <ClCompile Include="extra\event_manager.cpp" />
     <ClCompile Include="extra\window_manager.cpp" />
     <ClCompile Include="gui.cpp" />
     <ClCompile Include="wrapped\drawing.cpp" />
@@ -30,8 +32,11 @@
     <ClInclude Include="controls\button.h" />
     <ClInclude Include="controls\object.h" />
     <ClInclude Include="controls\window.h" />
+    <ClInclude Include="extra\event.h" />
+    <ClInclude Include="extra\event_manager.h" />
     <ClInclude Include="extra\window_manager.h" />
     <ClInclude Include="gui.h" />
+    <ClInclude Include="instance.h" />
     <ClInclude Include="thirdparty\layout.h" />
     <ClInclude Include="wrapped\drawing.h" />
   </ItemGroup>

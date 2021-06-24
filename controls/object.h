@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../extra/event.h"
+
 #include <memory>
 #include <vector>
 
@@ -11,16 +13,22 @@ namespace deadcell::gui {
         std::shared_ptr<object> parent_ = nullptr;
         std::vector<std::shared_ptr<object>> children_;
 
+        using object_ptr = std::shared_ptr<object>;
+
     protected:
-        object(std::shared_ptr<object> parent = nullptr);
+        explicit object(object_ptr parent = nullptr);
 
     public:
         virtual ~object();
-        virtual void render();
 
-        void add_child(const std::shared_ptr<object> &object);
-        void remove_child(const std::shared_ptr<object> &object);
-        std::shared_ptr<object> get_child(const std::shared_ptr<object> &object);
+        virtual void event(const base_event &e) { }
+        virtual void render() { }
+
+        void dispatch_event(const base_event &e, const object_ptr &stay_within);
+
+        void add_child(const object_ptr &object);
+        void remove_child(const object_ptr &object);
+        std::shared_ptr<object> get_child(const object_ptr &object);
         std::vector<std::shared_ptr<object>> get_children() const;
     };
 }

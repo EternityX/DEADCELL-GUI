@@ -17,6 +17,12 @@
     <ClCompile Include="controls\object.cpp">
       <Filter>controls</Filter>
     </ClCompile>
+    <ClCompile Include="extra\event_manager.cpp">
+      <Filter>extra</Filter>
+    </ClCompile>
+    <ClCompile Include="extra\event.cpp">
+      <Filter>extra</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gui.h" />
@@ -37,6 +43,13 @@
     </ClInclude>
     <ClInclude Include="controls\object.h">
       <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="instance.h" />
+    <ClInclude Include="extra\event_manager.h">
+      <Filter>extra</Filter>
+    </ClInclude>
+    <ClInclude Include="extra\event.h">
+      <Filter>extra</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

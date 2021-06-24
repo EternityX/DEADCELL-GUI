@@ -11,12 +11,11 @@ namespace deadcell::gui {
         ImVec2 max_;
     public:
         window();
-        void event();
 
         void set_min_max(ImVec2 min, ImVec2 max);
-
         bool is_visible() const;
 
+        void event() override;
         void render() override;
     };
 }

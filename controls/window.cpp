@@ -7,10 +7,6 @@ namespace deadcell::gui {
 
 	}
 
-    void window::event() {
-	    
-	}
-
     void window::set_min_max(const ImVec2 min, const ImVec2 max) {
         min_ = min;
         max_ = max;
@@ -18,6 +14,16 @@ namespace deadcell::gui {
 
     bool window::is_visible() const {
 		return visible_;
+    }
+
+    void window::handle_drag_event() {
+	    
+	}
+
+    void window::event(const base_event &e) {
+        if (e.type() == window_event::drag_start) {
+            handle_drag_event();
+        }
     }
 
     void window::render() {
