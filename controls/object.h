@@ -3,6 +3,8 @@
 #include <memory>
 #include <vector>
 
+#include <imgui.h>
+
 namespace deadcell::gui {
     class object : public std::enable_shared_from_this<object> {
     private:
@@ -14,10 +16,11 @@ namespace deadcell::gui {
 
     public:
         virtual ~object();
-        virtual void draw();
+        virtual void render();
 
         void add_child(const std::shared_ptr<object> &object);
         void remove_child(const std::shared_ptr<object> &object);
         std::shared_ptr<object> get_child(const std::shared_ptr<object> &object);
+        std::vector<std::shared_ptr<object>> get_children() const;
     };
 }

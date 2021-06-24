@@ -23,7 +23,7 @@ namespace deadcell::gui {
         }
     }
 
-    void object::draw() {
+    void object::render() {
 
     }
 
@@ -52,5 +52,9 @@ namespace deadcell::gui {
         }
 
         return nullptr;
+    }
+
+    std::vector<std::shared_ptr<object>> object::get_children() const {
+        return children_;
     }
 }
