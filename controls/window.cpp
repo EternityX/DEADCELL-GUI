@@ -9,10 +9,6 @@ namespace deadcell::gui {
 
     }
 
-    void window::handle_drag_move_event() {
-      
-    }
-
     void window::event(const base_event &e) {
         const auto &io = ImGui::GetIO();
 

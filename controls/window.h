@@ -57,8 +57,6 @@ namespace deadcell::gui {
             return visible_;
         }
 
-        void handle_drag_move_event();
-
         void event(const base_event &e) override;
         void render() override;
     };
