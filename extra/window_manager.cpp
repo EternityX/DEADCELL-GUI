@@ -1,10 +1,10 @@
-#include "../instance.h"
 #include "window_manager.h"
 
+#include <deque>
+
+#include "../instance.h"
 #include "../wrapped/drawing.h"
 #include "../wrapped/input.h"
-
-#include <deque>
 
 namespace deadcell::gui {
     void window_manager::add_window(const window_ptr &win) {

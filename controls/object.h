@@ -8,10 +8,10 @@
 
 #include <map>
 #include <memory>
-#include <vector>
 #include <sstream>
-#include <utility>
 #include <string>
+#include <utility>
+#include <vector>
 #include <xstring>
 
 namespace deadcell::gui {

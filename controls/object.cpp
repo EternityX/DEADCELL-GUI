@@ -1,8 +1,6 @@
-#include "control.h"
 #include "object.h"
 
 #include <iostream>
-
 
 namespace deadcell::gui {
     object::object() = default;

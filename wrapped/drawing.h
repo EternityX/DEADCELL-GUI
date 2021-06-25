@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../gui.h"
-
 #include <cmath>
+
+#include "../gui.h"
 
 namespace deadcell::gui::drawing {
     void set_draw_list(ImDrawList *draw_list);
