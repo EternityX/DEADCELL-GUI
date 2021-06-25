@@ -55,8 +55,20 @@ namespace deadcell::gui {
     }
 
     void window::render() {
-        drawing::rect_filled(min_, { max_.x, 3 }, color::border_light, 4.0f);
-        drawing::rect_filled(min_ + ImVec2(1, 1), max_ - ImVec2(1, 1), color::body_darker, 4.0f, 0);
-        
+        // shadow
+        drawing::rect_shadow({ min_.x + 2, min_.y + 2 }, { max_.x - 2, max_.y - 2 }, IM_COL32(0, 0, 0, 255), 15.0f, {}, ImDrawCornerFlags_All, 4.0f);
+
+        // top titlebar border
+        drawing::rect_filled(min_, { max_.x, 12 }, color::border_light, 4.0f);
+
+        // titlebar
+        drawing::rect_filled(min_ + ImVec2(0, 1), ImVec2(max_.x, titlebar_height_), color::titlebar, 4.0f, 
+            ImDrawCornerFlags_TopLeft | ImDrawCornerFlags_TopRight);
+
+        // bottom titlebar border
+        drawing::rect_filled(min_ + ImVec2(0, titlebar_height_), ImVec2(max_.x, 1), color::border_dark);
+
+        drawing::rect_filled(min_ + ImVec2(0, titlebar_height_ + 1), max_ - ImVec2(0, titlebar_height_ + 1), color::body_dark, 4.0f,
+            ImDrawCornerFlags_BotLeft | ImDrawCornerFlags_BotRight); 
     }
 }
