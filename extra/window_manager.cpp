@@ -135,10 +135,12 @@ namespace deadcell::gui {
             const auto min = win->get_min();
             const auto max = win->get_max();
 
-            win->render();
+            if (win->is_visible()) {
+                win->render();
 
-            for (auto &child : win->get_children()) {
-                child->render();
+                for (auto &child : win->get_children()) {
+                    child->render();
+                }
             }
         }
     }

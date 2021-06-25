@@ -48,8 +48,12 @@ namespace deadcell::gui {
             max_ = min_ + size;
         }
 
-        void set_drag_zone(const ImVec2 size) {
-            
+        void set_visible(const bool visible) {
+            visible_ = visible;
+        }
+
+        void set_resizeable(const bool resizeable) {
+            resizeable_ = resizeable;
         }
 
         ImVec2 get_min() const {
