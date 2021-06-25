@@ -132,12 +132,8 @@ namespace deadcell::gui {
 
     void window_manager::render() {
         for (auto &win : windows_) {
-            const auto pos = win->get_min();
-            const auto size = win->get_max();
-
-            if (win == active_window_) {
-                //drawing::rect_shadow({ pos.x - 1, pos.y - 1 }, { size.x + 1, size.y + 1 }, color::active_window_glow, 15.0f, {});
-            }
+            const auto min = win->get_min();
+            const auto max = win->get_max();
 
             win->render();
 

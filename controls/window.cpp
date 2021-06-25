@@ -56,7 +56,7 @@ namespace deadcell::gui {
 
     void window::render() {
         // shadow
-        drawing::rect_shadow({ min_.x + 2, min_.y + 2 }, { max_.x - 4, max_.y - 4 }, IM_COL32(0, 0, 0, 255), 15.0f, {}, ImDrawCornerFlags_All, 4.0f);
+        drawing::rect_shadow({ min_.x + 2, min_.y + 2 }, { max_.x - 4, max_.y - 4 }, IM_COL32(0, 0, 0, 255), 15.0f, {}, ImDrawFlags_None, 4.0f);
 
         // top titlebar border
         drawing::rect_filled(min_, { max_.x, 12 }, color::border_light, 4.0f);
