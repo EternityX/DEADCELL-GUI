@@ -1,6 +1,6 @@
 #define LAY_IMPLEMENTATION
-
 #include "layout.h"
+
 
 layout_item::layout_item(lay_context* ctx, lay_id item) {
     ctx_ = ctx;

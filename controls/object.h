@@ -1,10 +1,11 @@
 #pragma once
 
 #include "../extra/event.h"
+#include "../gui.h"
 
-#define IMGUI_DEFINE_MATH_OPERATORS
-#include <imgui.h>
-#include <imgui_internal.h>
+//#define IMGUI_DEFINE_MATH_OPERATORS
+//#include <imgui.h>
+//#include <imgui_internal.h>
 
 #include <map>
 #include <memory>
@@ -14,6 +15,9 @@
 #include <vector>
 #include <xstring>
 
+
+#include "../wrapped/layout.h"
+
 namespace deadcell::gui {
     class object : public std::enable_shared_from_this<object> {
     private:
@@ -21,6 +25,8 @@ namespace deadcell::gui {
 
         std::shared_ptr<object> parent_ = nullptr;
         std::vector<object_ptr> children_;
+
+        layout_item root_row_;
 
     protected:
         std::map<std::string, object_ptr> unique_ids_;
@@ -30,6 +36,7 @@ namespace deadcell::gui {
         virtual ~object();
 
         virtual void event(const base_event &e) { }
+        virtual void layout(layout_item &overlay, layout_item &parent);
         virtual void render() { }
         virtual std::string get_class_name() { return "object()"; }
 

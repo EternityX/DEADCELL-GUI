@@ -1,6 +1,9 @@
+
 #include "object.h"
 
 #include <iostream>
+
+
 
 namespace deadcell::gui {
     object::object() = default;
@@ -15,6 +18,12 @@ namespace deadcell::gui {
         if (parent_) {
             parent_->remove_child(shared_from_this());
         }
+    }
+
+    void object::layout(layout_item& overlay, layout_item& parent) {
+        root_row_ = parent
+            .new_item(LAY_HFILL, LAY_ROW)
+            .margins(0.0f, 0.0f, 0.0f, 8.0f);
     }
 
     void object::dispatch_event(const base_event &e, const object_ptr &stay_within) {

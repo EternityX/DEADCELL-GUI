@@ -2,18 +2,14 @@
 
 #define LAY_FLOAT 1
 
-#include <imgui.h>
-#include <optional>
-#include <utility>
-
 #include "../thirdparty/layout.h"
 
-inline std::pair<ImVec2, ImVec2> rect_to_xywh(const lay_vec4 &rect) {
-    return std::make_pair(ImVec2(rect[0], rect[1]), ImVec2(rect[2], rect[3]));
-}
+//inline std::pair<ImVec2, ImVec2> rect_to_xywh(const lay_vec4 &rect) {
+//    return std::make_pair(ImVec2(rect[0], rect[1]), ImVec2(rect[2], rect[3]));
+//}
 
 class layout_item {
-    friend class c_element;
+    friend class object;
 
     lay_context* ctx_;
     lay_id item_;
