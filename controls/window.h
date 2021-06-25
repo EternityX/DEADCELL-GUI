@@ -17,10 +17,11 @@ namespace deadcell::gui {
 
         bool   dragging_ = false;
         ImVec2 drag_start_;
-        float  dragging_alpha_;
+        float  dragging_alpha_ = 1.0f;
 
         bool   resizing_ = false;
         ImVec2 resize_start_;
+
     protected:
         std::string unique_id_;
 
@@ -58,6 +59,10 @@ namespace deadcell::gui {
 
         void set_titlebar_height(const float titlebar_height) {
             titlebar_height_ = titlebar_height;
+        }
+
+        void set_min_size(const ImVec2 size) {
+            min_size_ = size;
         }
 
         ImVec2 get_min() const {
