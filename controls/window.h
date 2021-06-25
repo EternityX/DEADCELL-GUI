@@ -17,6 +17,7 @@ namespace deadcell::gui {
 
         bool   dragging_ = false;
         ImVec2 drag_start_;
+        float  dragging_alpha_;
 
         bool   resizing_ = false;
         ImVec2 resize_start_;

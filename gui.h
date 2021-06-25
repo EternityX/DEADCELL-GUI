@@ -12,6 +12,7 @@ namespace deadcell::gui {
         inline auto active_window_glow = IM_COL32(210, 115, 138, 255);
 
         inline auto titlebar = IM_COL32(30, 31, 41, 255);
+        inline auto titlebar_text = IM_COL32(199, 199, 199, 255);
 
         inline auto body_dark = IM_COL32(40, 42, 54, 255);
         inline auto body_darker = IM_COL32(23, 25, 33, 255);
@@ -21,6 +22,6 @@ namespace deadcell::gui {
     }
 
     namespace font {
-        ImFont *titlebar = nullptr;
+        inline ImFont *titlebar_font = nullptr;
     }
 }
