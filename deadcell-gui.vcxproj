@@ -28,6 +28,7 @@
     <ClCompile Include="gui.cpp" />
     <ClCompile Include="wrapped\drawing.cpp" />
     <ClCompile Include="wrapped\input.cpp" />
+    <ClCompile Include="wrapped\layout.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controls\button.h" />
@@ -42,6 +43,7 @@
     <ClInclude Include="thirdparty\layout.h" />
     <ClInclude Include="wrapped\drawing.h" />
     <ClInclude Include="wrapped\input.h" />
+    <ClInclude Include="wrapped\layout.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
