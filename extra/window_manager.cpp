@@ -72,21 +72,30 @@ namespace deadcell::gui {
         const auto win = get_window_under_cursor();
 
         static bool was_left_clicked = false;
-        static bool is_dragging = false;
-        static bool is_resizing = false;
+        static bool is_dragging = false, is_resizing = false;
+        static bool titlebar_hovered = false, resize_hovered = false;
 
         static window_ptr target_window = nullptr; // NOLINT(clang-diagnostic-exit-time-destructors)
+
+        if (win) {
+            titlebar_hovered = input::mouse_in_bounds(win->get_position(), { win->get_size().x, win->get_min().y + 24 });
+            resize_hovered = input::mouse_in_bounds(win->get_size() - ImVec2(10, 10), win->get_size());
+        }
+
+        if (resize_hovered && win || is_resizing) {
+            drawing::set_cursor(ImGuiMouseCursor_ResizeNWSE);
+        }
 
         if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
             if (!was_left_clicked && win) {
                 was_left_clicked = true;
                 move_to_front(win, true);         
 
-                if (input::mouse_in_bounds(win->get_position(), { win->get_size().x, win->get_min().y + 24 })) {
+                if (titlebar_hovered) {
                     is_dragging = true;
                     target_window = win;
                 }
-                else if (input::mouse_in_bounds(win->get_size() - ImVec2(10, 10), win->get_size())) {
+                else if (resize_hovered) {
                     is_resizing = true;
                     target_window = win;
                 }
@@ -111,6 +120,7 @@ namespace deadcell::gui {
                     is_dragging = false;
                 }
                 else if (is_resizing) {
+                    drawing::set_cursor(ImGuiMouseCursor_Arrow);
                     target_window->event(window_event::resize_end);
                     is_resizing = false;
                 }

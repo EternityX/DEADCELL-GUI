@@ -9,6 +9,10 @@ namespace deadcell::gui::drawing {
         dl = draw_list;
     }
 
+    void set_cursor(const int cursor) {
+        ImGui::SetMouseCursor(cursor);
+    }
+
     void rect_filled(const ImVec2 min, const ImVec2 max, const ImU32 col, const float round, const ImDrawFlags f) {
         assert(dl);
 
@@ -18,7 +22,6 @@ namespace deadcell::gui::drawing {
 
     void rect_shadow(const ImVec2 min, const ImVec2 max, const ImU32 col, const float shadow_thickness, 
         const ImVec2 shadow_offset, const ImDrawFlags f, const float rounding) {
-
         assert(dl);
 
         dl->AddShadowRect({ std::floor(min.x), std::floor(min.y) }, { std::floor(max.x), std::floor(max.y) },
