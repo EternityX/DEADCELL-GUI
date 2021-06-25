@@ -48,6 +48,10 @@ namespace deadcell::gui {
         std::deque<window_ptr> windows;
 
         for (auto &win : windows_) {
+            if (!win->is_visible()) {
+                continue;
+            }
+
             if (input::mouse_in_bounds(win->get_min(), win->get_size())) {
                 if (win == active_window_) {
                     return win;
