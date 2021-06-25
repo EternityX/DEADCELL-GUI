@@ -32,7 +32,8 @@ namespace deadcell::gui {
     }
 
     void window::render() {
-        drawing::rect_filled(min_, max_, IM_COL32(255, 255, 255, 255), 0.0f, 0);
-        drawing::rect_filled(min_, max_, IM_COL32(0, 255, 255, 255), 23.0f, 0);
+        drawing::rect_filled(get_position(), get_size(), color::border_light, 0.0f, 0);
+        drawing::rect_filled(get_position() + ImVec2(1, 1), get_size() - ImVec2(1, 1), color::body_darker, 0.0f, 0);
+        
     }
 }

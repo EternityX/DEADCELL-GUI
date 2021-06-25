@@ -1,5 +1,6 @@
 #include "../instance.h"
 #include "window_manager.h"
+#include "../wrapped/drawing.h"
 
 #include <deque>
 
@@ -15,11 +16,9 @@ namespace deadcell::gui {
     }
 
     void window_manager::remove_window(const window_ptr& win) {
-        const auto it = std::ranges::find_if(windows_, [&win](const window_ptr &ptr) {
+        if (const auto it = std::ranges::find_if(windows_, [&win](const window_ptr &ptr) {
             return ptr.get() == win.get();
-        });
-
-        if (it != windows_.end()) {
+        }); it != windows_.end()) {
             windows_.erase(it);
         }
     }
@@ -49,6 +48,11 @@ namespace deadcell::gui {
         for (auto &win : windows_) {
             if (io.MousePos.x >= win->get_position().x && io.MousePos.y >= win->get_position().y
                 && io.MousePos.x <= win->get_size().x && io.MousePos.y <= win->get_size().y) {
+
+                if (win == active_window_) {
+                    return win;
+                }
+
                 windows.push_back(win);
             }
         }
@@ -56,7 +60,7 @@ namespace deadcell::gui {
         if (windows.size() > 1) {
             return windows.back();
         }
-
+        
         if (windows.size() == 1) {
             return windows.at(0);
         }
@@ -64,21 +68,43 @@ namespace deadcell::gui {
         return nullptr;
     }
 
+    void window_manager::handle_window_move(const window_ptr &win) {
+        static bool was_left_clicked = false;
+
+        static window_ptr dragged_window = nullptr; // NOLINT(clang-diagnostic-exit-time-destructors)
+
+        if (!was_left_clicked && win && ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
+            was_left_clicked = true;
+            dragged_window = win;
+        }
+
+        if (dragged_window && was_left_clicked && ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
+            dragged_window->event(window_event::left_mouse_down);
+            move_to_front(dragged_window, true);
+        }
+
+        if (was_left_clicked && ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
+            dragged_window->event(window_event::left_mouse_up);
+            was_left_clicked = false;
+        }
+    }
+
     void window_manager::process_mouse() {
-        auto win = get_window_under_cursor();
+        const auto win = get_window_under_cursor();
+        handle_window_move(win);
 
-        if (win && ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
-            move_to_front(win, true);
-            win->event(window_event::left_mouse_down);
-        }
 
-        if (win && ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
-            win->event(window_event::left_mouse_up);
-        }
     }
 
     void window_manager::render() {
         for (auto &win : windows_) {
+            if (win == active_window_) {
+                const auto pos = win->get_position();
+                const auto size = win->get_size();
+
+                drawing::rect_shadow({ pos.x - 1, pos.y - 1 }, { size.x + 1, size.y + 1 }, color::active_window_glow, 15.0f, {});
+            }
+
             win->render();
 
             for (auto &child : win->get_children()) {

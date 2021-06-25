@@ -20,7 +20,8 @@ namespace deadcell::gui {
 
         }
 
-        std::shared_ptr<window_manager> get_wm() const {
+        // return pointer to window manager class
+        std::shared_ptr<window_manager> wm() const {
             return window_manager_;
         }
     };
