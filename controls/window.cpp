@@ -55,8 +55,8 @@ namespace deadcell::gui {
     }
 
     void window::render() {
-        drawing::rect_filled(get_min(), { get_max().x, 3 }, color::border_light, 4.0f);
-        drawing::rect_filled(get_min() + ImVec2(1, 1), get_max() - ImVec2(1, 1), color::body_darker, 4.0f, 0);
+        drawing::rect_filled(min_, { max_.x, 3 }, color::border_light, 4.0f);
+        drawing::rect_filled(min_ + ImVec2(1, 1), max_ - ImVec2(1, 1), color::body_darker, 4.0f, 0);
         
     }
 }
