@@ -79,7 +79,5 @@ namespace deadcell::gui {
         const auto body_dark_color = color::body_dark - IM_COL32(0, 0, 0, std::clamp(static_cast<int>(82.0f * dragging_alpha_), 0, 255));
 
         drawing::rect_filled(min_ + ImVec2(0, titlebar_height_ + 1), max_ - ImVec2(0, titlebar_height_ + 1), body_dark_color, 4.0f, ImDrawCornerFlags_BotLeft | ImDrawCornerFlags_BotRight);     
-
-
     }
 }

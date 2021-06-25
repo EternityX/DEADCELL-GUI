@@ -3,8 +3,6 @@
 
 #include <iostream>
 
-
-
 namespace deadcell::gui {
     object::object() = default;
 
