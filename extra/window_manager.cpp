@@ -48,7 +48,7 @@ namespace deadcell::gui {
         std::deque<window_ptr> windows;
 
         for (auto &win : windows_) {
-            if (input::mouse_in_bounds(win->get_position(), win->get_size())) {
+            if (input::mouse_in_bounds(win->get_min(), win->get_size())) {
                 if (win == active_window_) {
                     return win;
                 }
@@ -78,7 +78,7 @@ namespace deadcell::gui {
         static window_ptr target_window = nullptr; // NOLINT(clang-diagnostic-exit-time-destructors)
 
         if (win) {
-            titlebar_hovered = input::mouse_in_bounds(win->get_position(), { win->get_size().x, win->get_min().y + 24 });
+            titlebar_hovered = input::mouse_in_bounds(win->get_min(), { win->get_size().x, win->get_min().y + win->get_titlebar_height() });
             resize_hovered = input::mouse_in_bounds(win->get_size() - ImVec2(10, 10), win->get_size());
         }
 
@@ -132,22 +132,17 @@ namespace deadcell::gui {
 
     void window_manager::render() {
         for (auto &win : windows_) {
-            const auto pos = win->get_position();
-            const auto size = win->get_size();
+            const auto pos = win->get_min();
+            const auto size = win->get_max();
 
             if (win == active_window_) {
-                drawing::rect_shadow({ pos.x - 1, pos.y - 1 }, { size.x + 1, size.y + 1 }, color::active_window_glow, 15.0f, {});
+                //drawing::rect_shadow({ pos.x - 1, pos.y - 1 }, { size.x + 1, size.y + 1 }, color::active_window_glow, 15.0f, {});
             }
 
             win->render();
 
             for (auto &child : win->get_children()) {
                 child->render();
-            }
-
-            if (win->is_resizable()) {
-                drawing::rect_filled(size - ImVec2(3, 6), size - ImVec2(2, 2), color::border_light);
-                drawing::rect_filled(size - ImVec2(6, 3), size - ImVec2(2, 2), color::border_light);
             }
         }
     }

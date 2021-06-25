@@ -12,10 +12,10 @@ namespace deadcell::gui {
         ImVec2 max_;
         ImVec2 last_mouse_pos_;
 
+        int titlebar_height_ = 50;
         ImVec2 min_size_ = { 250, 250 };
 
         bool   dragging_ = false;
-        ImVec2 drag_zone_;
         ImVec2 drag_start_;
 
         bool   resizing_ = false;
@@ -59,16 +59,12 @@ namespace deadcell::gui {
             return max_;
         }
 
-        ImVec2 get_position() const {
-            return min_;
-        }
-
         ImVec2 get_size() const {
             return max_ + min_;
         }
 
-        ImVec2 get_drag_zone() const {
-            return drag_zone_;
+        int get_titlebar_height() const {
+            return titlebar_height_;
         }
 
         bool is_visible() const {
