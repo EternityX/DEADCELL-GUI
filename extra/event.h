@@ -41,7 +41,9 @@ namespace deadcell::gui {
             left_mouse_down,
             left_mouse_up,
             right_mouse_down,
-            right_mouse_up
+            right_mouse_up,
+            drag_start,
+            drag_end,
         };
 
 #pragma warning(suppress: 26812)

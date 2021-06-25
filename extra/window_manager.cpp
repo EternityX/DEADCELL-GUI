@@ -1,6 +1,8 @@
 #include "../instance.h"
 #include "window_manager.h"
+
 #include "../wrapped/drawing.h"
+#include "../wrapped/input.h"
 
 #include <deque>
 
@@ -46,9 +48,7 @@ namespace deadcell::gui {
         std::deque<window_ptr> windows;
 
         for (auto &win : windows_) {
-            if (io.MousePos.x >= win->get_position().x && io.MousePos.y >= win->get_position().y
-                && io.MousePos.x <= win->get_size().x && io.MousePos.y <= win->get_size().y) {
-
+            if (input::mouse_in_bounds(win->get_position(), win->get_size())) {
                 if (win == active_window_) {
                     return win;
                 }
@@ -68,32 +68,30 @@ namespace deadcell::gui {
         return nullptr;
     }
 
-    void window_manager::handle_window_move(const window_ptr &win) {
-        static bool was_left_clicked = false;
+    void window_manager::process_mouse() {
+        const auto win = get_window_under_cursor();
 
+        static bool was_left_clicked = false;
         static window_ptr dragged_window = nullptr; // NOLINT(clang-diagnostic-exit-time-destructors)
 
         if (!was_left_clicked && win && ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
-            was_left_clicked = true;
-            dragged_window = win;
+            move_to_front(win, true);
+            
+
+            if (input::mouse_in_bounds(win->get_position(), { win->get_size().x, win->get_min().y + 24 })) {
+                was_left_clicked = true;
+                dragged_window = win;
+            }
         }
 
         if (dragged_window && was_left_clicked && ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
-            dragged_window->event(window_event::left_mouse_down);
-            move_to_front(dragged_window, true);
+            dragged_window->event(window_event::drag_start);
         }
 
-        if (was_left_clicked && ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
-            dragged_window->event(window_event::left_mouse_up);
+        if (dragged_window && was_left_clicked && ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
+            dragged_window->event(window_event::drag_end);
             was_left_clicked = false;
         }
-    }
-
-    void window_manager::process_mouse() {
-        const auto win = get_window_under_cursor();
-        handle_window_move(win);
-
-
     }
 
     void window_manager::render() {

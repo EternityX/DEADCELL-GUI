@@ -23,6 +23,9 @@
     <ClCompile Include="extra\event.cpp">
       <Filter>extra</Filter>
     </ClCompile>
+    <ClCompile Include="wrapped\input.cpp">
+      <Filter>wrapped</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gui.h" />
@@ -50,6 +53,9 @@
     </ClInclude>
     <ClInclude Include="extra\event.h">
       <Filter>extra</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapped\input.h">
+      <Filter>wrapped</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

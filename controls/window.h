@@ -11,14 +11,14 @@ namespace deadcell::gui {
         ImVec2 max_;
         ImVec2 last_mouse_pos_;
 
+        bool   dragging_ = false;
+        ImVec2 drag_zone_;
+        ImVec2 drag_start_;
     protected:
         std::string unique_id_;
 
     public:
         window(std::string_view unique_id);
-
-        bool dragging_ = false;
-        ImVec2 drag_start_;
 
         void set_min_max(const ImVec2 min, const ImVec2 max) {
             min_ = min;
@@ -41,6 +41,10 @@ namespace deadcell::gui {
             max_ = min_ + size;
         }
 
+        void set_drag_zone(const ImVec2 size) {
+            
+        }
+
         ImVec2 get_min() const {
             return min_;
         }
@@ -55,6 +59,10 @@ namespace deadcell::gui {
 
         ImVec2 get_size() const {
             return max_ + min_;
+        }
+
+        ImVec2 get_drag_zone() const {
+            return drag_zone_;
         }
 
         bool is_visible() const {
