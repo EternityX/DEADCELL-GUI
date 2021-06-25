@@ -7,13 +7,13 @@
 #include "wrapped/drawing.h"
 
 namespace deadcell::gui {
-    class instance {
+    class gui_instance {
     private:
         bool initialized_ = false;
         std::shared_ptr<window_manager> window_manager_;
 
     public:
-        instance() {
+        gui_instance() {
             auto &io = ImGui::GetIO();
 
             window_manager_ = std::make_unique<window_manager>();
@@ -23,7 +23,7 @@ namespace deadcell::gui {
             initialized_ = true;
         }
 
-        ~instance() {
+        ~gui_instance() {
 
         }
 

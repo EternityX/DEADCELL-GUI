@@ -2,7 +2,7 @@
 
 #include <deque>
 
-#include "../instance.h"
+#include "../gui_instance.h"
 #include "../wrapped/drawing.h"
 #include "../wrapped/input.h"
 

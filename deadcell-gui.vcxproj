@@ -38,7 +38,7 @@
     <ClInclude Include="extra\event_manager.h" />
     <ClInclude Include="extra\window_manager.h" />
     <ClInclude Include="gui.h" />
-    <ClInclude Include="instance.h" />
+    <ClInclude Include="gui_instance.h" />
     <ClInclude Include="thirdparty\cerebri_sans_medium_ttf.h" />
     <ClInclude Include="thirdparty\layout.h" />
     <ClInclude Include="wrapped\drawing.h" />

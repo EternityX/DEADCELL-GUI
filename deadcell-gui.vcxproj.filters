@@ -50,7 +50,7 @@
     <ClInclude Include="controls\object.h">
       <Filter>controls</Filter>
     </ClInclude>
-    <ClInclude Include="instance.h" />
+    <ClInclude Include="gui_instance.h" />
     <ClInclude Include="extra\event_manager.h">
       <Filter>extra</Filter>
     </ClInclude>
