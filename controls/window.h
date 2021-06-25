@@ -56,6 +56,10 @@ namespace deadcell::gui {
             resizeable_ = resizeable;
         }
 
+        void set_titlebar_height(const float titlebar_height) {
+            titlebar_height_ = titlebar_height;
+        }
+
         ImVec2 get_min() const {
             return min_;
         }

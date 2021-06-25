@@ -86,7 +86,7 @@ namespace deadcell::gui {
             resize_hovered = input::mouse_in_bounds(win->get_size() - ImVec2(10, 10), win->get_size());
         }
 
-        if (resize_hovered && win || is_resizing) {
+        if (resize_hovered && win && win->is_resizable() || is_resizing) {
             drawing::set_cursor(ImGuiMouseCursor_ResizeNWSE);
         }
 
@@ -99,7 +99,7 @@ namespace deadcell::gui {
                     is_dragging = true;
                     target_window = win;
                 }
-                else if (resize_hovered) {
+                else if (resize_hovered && win->is_resizable()) {
                     is_resizing = true;
                     target_window = win;
                 }

@@ -65,9 +65,11 @@ namespace deadcell::gui {
         drawing::rect_filled(min_ + ImVec2(0, 1), ImVec2(max_.x, titlebar_height_), color::titlebar, 4.0f,  ImDrawCornerFlags_TopLeft | ImDrawCornerFlags_TopRight);
 
         const auto titlebar_text = "DEADCELL";
-
         const auto title_text_size = drawing::measure_text(font::titlebar_font, 0.0f, 24.0f, titlebar_text);
-        drawing::text({ min_.x + 15, min_.y + title_text_size.y / 2 }, color::titlebar_text, font::titlebar_font, 0.0f, 0.0f, titlebar_text);
+
+        if (titlebar_height_ > title_text_size.y) {
+            drawing::text({ min_.x + 15, min_.y + titlebar_height_ / 2 - title_text_size.y / 2 }, color::titlebar_text, font::titlebar_font, 0.0f, 0.0f, titlebar_text);
+        }
 
         // bottom titlebar border
         drawing::rect_filled(min_ + ImVec2(0, titlebar_height_), ImVec2(max_.x, 1), color::border_dark);
@@ -77,5 +79,7 @@ namespace deadcell::gui {
         const auto body_dark_color = color::body_dark - IM_COL32(0, 0, 0, std::clamp(static_cast<int>(82.0f * dragging_alpha_), 0, 255));
 
         drawing::rect_filled(min_ + ImVec2(0, titlebar_height_ + 1), max_ - ImVec2(0, titlebar_height_ + 1), body_dark_color, 4.0f, ImDrawCornerFlags_BotLeft | ImDrawCornerFlags_BotRight);     
+
+
     }
 }
