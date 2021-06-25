@@ -6,14 +6,20 @@ namespace deadcell::gui {
     class window : public object {
     private:
         bool visible_ = true;
+        bool resizeable_ = true;
 
         ImVec2 min_;
         ImVec2 max_;
         ImVec2 last_mouse_pos_;
 
+        ImVec2 min_size_ = { 250, 250 };
+
         bool   dragging_ = false;
         ImVec2 drag_zone_;
         ImVec2 drag_start_;
+
+        bool   resizing_ = false;
+        ImVec2 resize_start_;
     protected:
         std::string unique_id_;
 
@@ -67,6 +73,10 @@ namespace deadcell::gui {
 
         bool is_visible() const {
             return visible_;
+        }
+
+        bool is_resizable() const {
+            return resizeable_;
         }
 
         void event(const base_event &e) override;

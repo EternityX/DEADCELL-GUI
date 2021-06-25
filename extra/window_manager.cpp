@@ -72,34 +72,60 @@ namespace deadcell::gui {
         const auto win = get_window_under_cursor();
 
         static bool was_left_clicked = false;
-        static window_ptr dragged_window = nullptr; // NOLINT(clang-diagnostic-exit-time-destructors)
+        static bool is_dragging = false;
+        static bool is_resizing = false;
 
-        if (!was_left_clicked && win && ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
-            move_to_front(win, true);
-            
+        static window_ptr target_window = nullptr; // NOLINT(clang-diagnostic-exit-time-destructors)
 
-            if (input::mouse_in_bounds(win->get_position(), { win->get_size().x, win->get_min().y + 24 })) {
+        if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
+            if (!was_left_clicked && win) {
                 was_left_clicked = true;
-                dragged_window = win;
+                move_to_front(win, true);         
+
+                if (input::mouse_in_bounds(win->get_position(), { win->get_size().x, win->get_min().y + 24 })) {
+                    is_dragging = true;
+                    target_window = win;
+                }
+                else if (input::mouse_in_bounds(win->get_size() - ImVec2(10, 10), win->get_size())) {
+                    is_resizing = true;
+                    target_window = win;
+                }
             }
         }
 
-        if (dragged_window && was_left_clicked && ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
-            dragged_window->event(window_event::drag_start);
+        if (ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
+            if (target_window) {
+                if (is_dragging) {
+                    target_window->event(window_event::drag_start);
+                }
+                else if (is_resizing) {
+                    target_window->event(window_event::resize_start);
+                }
+            }
         }
 
-        if (dragged_window && was_left_clicked && ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
-            dragged_window->event(window_event::drag_end);
+        if (ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
+            if (target_window) {
+                if (is_dragging) {
+                    target_window->event(window_event::drag_end);
+                    is_dragging = false;
+                }
+                else if (is_resizing) {
+                    target_window->event(window_event::resize_end);
+                    is_resizing = false;
+                }
+            }
+
             was_left_clicked = false;
         }
     }
 
     void window_manager::render() {
         for (auto &win : windows_) {
-            if (win == active_window_) {
-                const auto pos = win->get_position();
-                const auto size = win->get_size();
+            const auto pos = win->get_position();
+            const auto size = win->get_size();
 
+            if (win == active_window_) {
                 drawing::rect_shadow({ pos.x - 1, pos.y - 1 }, { size.x + 1, size.y + 1 }, color::active_window_glow, 15.0f, {});
             }
 
@@ -108,12 +134,17 @@ namespace deadcell::gui {
             for (auto &child : win->get_children()) {
                 child->render();
             }
+
+            if (win->is_resizable()) {
+                drawing::rect_filled(size - ImVec2(3, 6), size - ImVec2(2, 2), color::border_light);
+                drawing::rect_filled(size - ImVec2(6, 3), size - ImVec2(2, 2), color::border_light);
+            }
         }
     }
 
     void window_manager::new_frame() {
         process_mouse();
-        render(); 
+        render();
     }
 
     void window_manager::end_frame() {
