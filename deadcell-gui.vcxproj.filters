@@ -29,6 +29,9 @@
     <ClCompile Include="wrapped\layout.cpp">
       <Filter>wrapped</Filter>
     </ClCompile>
+    <ClCompile Include="wrapped\platform.cpp">
+      <Filter>wrapped</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gui.h" />
@@ -64,6 +67,12 @@
       <Filter>thirdparty</Filter>
     </ClInclude>
     <ClInclude Include="wrapped\layout.h">
+      <Filter>wrapped</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapped\platform.h">
+      <Filter>wrapped</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapped\types.h">
       <Filter>wrapped</Filter>
     </ClInclude>
   </ItemGroup>

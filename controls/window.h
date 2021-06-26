@@ -10,12 +10,12 @@ namespace deadcell::gui {
         bool dragging_ = false;
         bool resizing_ = false;
 
-        ImVec2 pos_;
-        ImVec2 size_;
-        ImVec2 min_size_ = { 250, 250 };
+        point pos_;
+        point size_;
+        point min_size_ = { 250, 250 };
 
-        ImVec2 interaction_mouse_pos_;
-        ImVec2 interaction_offset_;
+        point interaction_mouse_pos_;
+        point interaction_offset_;
 
         float titlebar_height_ = 50.0f;
         float dragging_alpha_ = 1.0f;
@@ -26,16 +26,16 @@ namespace deadcell::gui {
     public:
         window(std::string_view unique_id);
 
-        void set_position_size(const ImVec2 pos, const ImVec2 size) {
+        void set_position_size(const point& pos, const point& size) {
             pos_ = pos;
             size_ = size;
         }
 
-        void set_position(const ImVec2 pos) {
+        void set_position(const point& pos) {
             pos_ = pos;
         }
 
-        void set_size(const ImVec2 size) {
+        void set_size(const point& size) {
             size_ = size;
         }
 
@@ -51,15 +51,15 @@ namespace deadcell::gui {
             titlebar_height_ = titlebar_height;
         }
 
-        void set_min_size(const ImVec2 size) {
+        void set_min_size(const point& size) {
             min_size_ = size;
         }
 
-        ImVec2 get_position() const {
+        point get_position() const {
             return pos_;
         }
 
-        ImVec2 get_size() const {
+        point get_size() const {
             return size_;
         }
 

@@ -5,6 +5,7 @@
 #include "../gui_instance.h"
 #include "../wrapped/drawing.h"
 #include "../wrapped/input.h"
+#include "../wrapped/platform.h"
 
 namespace deadcell::gui {
     void window_manager::add_window(const window_ptr &win) {
@@ -56,7 +57,7 @@ namespace deadcell::gui {
                 continue;
             }
 
-            if (input::mouse_in_bounds(win->get_position(), win->get_size())) {
+            if (input::is_in_bounds(win->get_position(), win->get_size())) {
                 if (win == active_window_) {
                     return win;
                 }
@@ -87,12 +88,12 @@ namespace deadcell::gui {
         if (hovered_window) {
             const auto bottom_right = hovered_window->get_position() + hovered_window->get_size();
 
-            titlebar_hovered = input::mouse_in_bounds(hovered_window->get_position(), { hovered_window->get_size().x, hovered_window->get_titlebar_height() });
-            resize_hovered = input::mouse_in_bounds(bottom_right - ImVec2(10, 10), bottom_right);
+            titlebar_hovered = input::is_in_bounds(hovered_window->get_position(), { hovered_window->get_size().x, hovered_window->get_titlebar_height() });
+            resize_hovered = input::is_in_bounds(bottom_right - 10, bottom_right);
         }
 
         if ((resize_hovered && (hovered_window && hovered_window->is_resizable())) || is_resizing) {
-            drawing::set_cursor(ImGuiMouseCursor_ResizeNWSE);
+            platform::set_cursor(platform::cursor_resize_nwse);
         }
 
         if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
@@ -141,7 +142,8 @@ namespace deadcell::gui {
                     is_dragging = false;
                 }
                 else if (is_resizing) {
-                    drawing::set_cursor(ImGuiMouseCursor_Arrow);
+                    platform::set_cursor(platform::cursor_arrow);
+
                     target_window->dispatch_event(window_event::resize_end);
                     is_resizing = false;
                 }

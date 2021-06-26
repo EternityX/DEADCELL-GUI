@@ -21,6 +21,6 @@ namespace deadcell::gui {
     }
 
     void button::render() {
-        drawing::rect_filled(min_, max_, color::body_darker, 4.0f);
+        drawing::rect_filled(min_, size_, colors::body_darker, 4.0f);
     }
 }

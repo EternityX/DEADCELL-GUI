@@ -5,20 +5,21 @@
 #include "extra/window_manager.h"
 #include "thirdparty/cerebri_sans_medium_ttf.h"
 #include "wrapped/drawing.h"
+#include "wrapped/platform.h"
 
 namespace deadcell::gui {
+
     class gui_instance {
     private:
         bool initialized_ = false;
+
         std::shared_ptr<window_manager> window_manager_;
 
     public:
         gui_instance() {
-            auto &io = ImGui::GetIO();
-
             window_manager_ = std::make_unique<window_manager>();
 
-            font::titlebar_font = drawing::create_font_from_ttf(io, cerebri_sans_medium_ttf, sizeof(cerebri_sans_medium_ttf), 24.0f);
+            fonts::titlebar_font = platform::create_font_from_data(cerebri_sans_medium_ttf, sizeof(cerebri_sans_medium_ttf), 24.0f);
 
             initialized_ = true;
         }
@@ -32,4 +33,5 @@ namespace deadcell::gui {
             return window_manager_;
         }
     };
+
 }

@@ -3,14 +3,39 @@
 #include <cmath>
 
 #include "../gui.h"
+#include "types.h"
 
 namespace deadcell::gui::drawing {
-    void set_draw_list(ImDrawList *draw_list);
-    void set_cursor(int cursor);
-    float alpha_fade(float value, float target, float rate = 0.065f, float rewind_rate = 0.09f);
-    ImFont *create_font_from_ttf(ImGuiIO &io, const uint8_t *ttf_data, int ttf_data_size, float size, int rasterizer_flags = 0, std::initializer_list<ImWchar> glyph_ranges = { });
-    ImVec2 measure_text(ImFont *font, float wrap_width, float font_size, const char *text);
-    void text(ImVec2 position, ImU32 color, ImFont *font, float wrap_width, float font_size, const char *text);
-    void rect_filled(ImVec2 position, ImVec2 size, ImU32 col, float round = 0.0f, ImDrawFlags f = ImDrawFlags_None);
-    void rect_shadow(ImVec2 position, ImVec2 size, ImU32 col, float shadow_thickness, ImVec2 shadow_offset, ImDrawFlags f = ImDrawFlags_None, float rounding = 0.0f);
+
+	enum draw_list_e {
+		draw_list_background,
+		draw_list_foreground,
+		draw_list_overlay,
+	};
+
+	enum draw_flags_e {
+		draw_flags_none = 0,
+		draw_flags_closed = 1 << 0,
+		draw_flags_round_top_left = 1 << 4,
+		draw_flags_round_top_right = 1 << 5,
+		draw_flags_round_bottom_left = 1 << 6,
+		draw_flags_round_bottom_right = 1 << 7,
+		draw_flags_round_none = 1 << 8,
+		draw_flags_round_top = draw_flags_round_top_left | draw_flags_round_top_right,
+		draw_flags_round_bottom = draw_flags_round_bottom_left | draw_flags_round_bottom_right,
+		draw_flags_round_left = draw_flags_round_bottom_left | draw_flags_round_top_left,
+		draw_flags_round_right = draw_flags_round_bottom_right | draw_flags_round_top_right,
+		draw_flags_round_all = draw_flags_round_top_left | draw_flags_round_top_right | draw_flags_round_bottom_left | draw_flags_round_bottom_right,
+		draw_flags_round_default_ = draw_flags_round_all,
+		draw_flags_round_mask_ = draw_flags_round_all | draw_flags_round_none,
+		draw_flags_shadow_cut_out_shape_background = 1 << 9,
+	};
+
+	point measure_text(ImFont* font, float wrap_width, float font_size, const char* text);
+
+	void set_draw_list(int draw_list);
+	void text(const point& position, const color& col, ImFont* font, float wrap_width, float font_size, const char* text);
+	void rect_filled(const point& position, const point& size, const color& col, float rounding = 0.0f, int draw_flags = draw_flags_none);
+	void rect_shadow(const point& position, const point& size, const color& col, const point& shadow_offset, float shadow_thickness, float rounding = 0.0f, int draw_flags = draw_flags_none);
+
 }

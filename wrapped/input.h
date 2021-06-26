@@ -1,7 +1,24 @@
 #pragma once
 
 #include "../gui.h"
+#include "types.h"
 
 namespace deadcell::gui::input {
-	bool mouse_in_bounds(ImVec2 position, ImVec2 size);
+
+	enum mouse_button_e {
+		mouse_left,
+		mouse_middle,
+		mouse_right,
+	};
+
+	point get_mouse_pos();
+	point get_mouse_delta();
+
+	float get_wheel_delta();
+
+	bool is_mouse_clicked(int mouse_button, bool repeat = false);
+	bool is_mouse_down(int mouse_button);
+	bool is_mouse_released(int mouse_button);
+	bool is_in_bounds(const point& position, const point& size);
+
 }
