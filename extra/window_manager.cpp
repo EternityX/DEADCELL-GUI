@@ -66,7 +66,7 @@ namespace deadcell::gui {
         }
         
         if (windows.size() == 1) {
-            return windows.at(0);
+            return windows.front();
         }
 
         return nullptr;
