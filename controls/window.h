@@ -7,20 +7,18 @@ namespace deadcell::gui {
     private:
         bool visible_ = true;
         bool resizeable_ = true;
+        bool dragging_ = false;
+        bool resizing_ = false;
 
-        ImVec2 min_;
-        ImVec2 max_;
-        ImVec2 last_mouse_pos_;
-
-        float titlebar_height_ = 50.0f;
+        ImVec2 pos_;
+        ImVec2 size_;
         ImVec2 min_size_ = { 250, 250 };
 
-        bool   dragging_ = false;
-        ImVec2 drag_start_;
-        float  dragging_alpha_ = 1.0f;
+        ImVec2 interaction_mouse_pos_;
+        ImVec2 interaction_offset_;
 
-        bool   resizing_ = false;
-        ImVec2 resize_start_;
+        float titlebar_height_ = 50.0f;
+        float dragging_alpha_ = 1.0f;
 
     protected:
         std::string unique_id_;
@@ -28,25 +26,17 @@ namespace deadcell::gui {
     public:
         window(std::string_view unique_id);
 
-        void set_min_max(const ImVec2 min, const ImVec2 max) {
-            min_ = min;
-            max_ = max;
-        }
-
-        void set_min(const ImVec2 min) {
-            min_ = min;
-        }
-
-        void set_max(const ImVec2 max) {
-            max_ = max;
+        void set_position_size(const ImVec2 pos, const ImVec2 size) {
+            pos_ = pos;
+            size_ = size;
         }
 
         void set_position(const ImVec2 pos) {
-            min_ = pos;
+            pos_ = pos;
         }
 
         void set_size(const ImVec2 size) {
-            max_ = min_ + size;
+            size_ = size;
         }
 
         void set_visible(const bool visible) {
@@ -65,16 +55,12 @@ namespace deadcell::gui {
             min_size_ = size;
         }
 
-        ImVec2 get_min() const {
-            return min_;
-        }
-
-        ImVec2 get_max() const {
-            return max_;
+        ImVec2 get_postition() const {
+            return pos_;
         }
 
         ImVec2 get_size() const {
-            return max_ + min_;
+            return size_;
         }
 
         float get_titlebar_height() const {
@@ -91,6 +77,7 @@ namespace deadcell::gui {
 
         void event(const base_event &e) override;
         void render() override;
+
         std::string get_class_name() override { return "window()"; }
     };
 }
