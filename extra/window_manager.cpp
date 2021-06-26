@@ -90,18 +90,15 @@ namespace deadcell::gui {
             titlebar_hovered = input::mouse_in_bounds(hovered_window->get_position(), { hovered_window->get_size().x, hovered_window->get_titlebar_height() });
             resize_hovered = input::mouse_in_bounds(bottom_right - ImVec2(10, 10), bottom_right);
         }
-        else {
-            // This might not be a good idea in-case we ever want to
-            // capture events if the window is not hovered.
-            return;
-        }
 
         if ((resize_hovered && (hovered_window && hovered_window->is_resizable())) || is_resizing) {
             drawing::set_cursor(ImGuiMouseCursor_ResizeNWSE);
         }
 
         if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
-            hovered_window->dispatch_event(base_event::mouse_click);
+            if (hovered_window) {
+                hovered_window->dispatch_event(base_event::mouse_click);
+            }
 
             if (!was_left_clicked && hovered_window) {
                 was_left_clicked = true;
@@ -119,7 +116,9 @@ namespace deadcell::gui {
         }
 
         if (ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
-            hovered_window->dispatch_event(base_event::mouse_down);
+            if (hovered_window) {
+                hovered_window->dispatch_event(base_event::mouse_down);
+            }
 
             if (target_window) {
                 if (is_dragging) {
@@ -132,7 +131,9 @@ namespace deadcell::gui {
         }
 
         if (ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
-            hovered_window->dispatch_event(base_event::mouse_up);
+            if (hovered_window) {
+                hovered_window->dispatch_event(base_event::mouse_up);
+            }
 
             if (target_window) {
                 if (is_dragging) {
