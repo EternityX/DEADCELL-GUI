@@ -104,12 +104,14 @@ namespace deadcell::gui {
     std::string object::build_class_tree() {
         std::stringstream ss;
 
-        auto reverse_map = [&](const std::map<std::string, object_ptr> &map, const object_ptr &object) {
+        auto reverse_map = [&](const std::map<std::string, object_ptr> &map, const object_ptr &object) -> std::string {
             for (const auto &[key, value] : map) {
                 if (value == object) {
                     return key;
                 }
             }
+
+            return "";
         };
 
         ss << "0x" << std::hex << shared_from_this().get() << std::dec

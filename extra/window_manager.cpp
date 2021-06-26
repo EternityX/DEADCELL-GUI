@@ -92,7 +92,7 @@ namespace deadcell::gui {
             return;
         }
 
-        if (resize_hovered && hovered_window && hovered_window->is_resizable() || is_resizing) {
+        if ((resize_hovered && (hovered_window && hovered_window->is_resizable())) || is_resizing) {
             drawing::set_cursor(ImGuiMouseCursor_ResizeNWSE);
         }
 
