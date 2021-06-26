@@ -48,6 +48,11 @@ namespace deadcell::gui {
             resize_end,
         };
 
+        window_event()
+            : base_event() {
+            
+        }
+
 #pragma warning(suppress: 26812)
         explicit window_event(const type_e type)
             : base_event(type) {
