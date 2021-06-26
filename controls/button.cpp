@@ -12,6 +12,14 @@ namespace deadcell::gui {
 		return visible_;
     }
 
+    void button::event(base_event &e) {
+        if (e.type() == base_event::mouse_down) {
+
+        }
+
+        object::event(e);
+    }
+
     void button::render() {
         drawing::rect_filled(min_, max_, color::body_darker, 4.0f);
     }

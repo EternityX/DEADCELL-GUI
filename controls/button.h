@@ -18,6 +18,7 @@ namespace deadcell::gui {
 
         bool is_visible() const;
 
+        void event(base_event &e) override;
         void render() override;
         std::string get_class_name() override { return "button()"; }
     };

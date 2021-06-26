@@ -10,7 +10,7 @@ namespace deadcell::gui {
         unique_ids_.insert(std::pair(unique_id, this));
     }
 
-    void window::event(const base_event &e) {
+    void window::event(base_event &e) {
         const auto &io = ImGui::GetIO();
 
         if (dragging_) {
@@ -56,6 +56,12 @@ namespace deadcell::gui {
                 resizing_ = false;
             }
         }
+
+        if (e.type() == base_event::mouse_down) {
+            e.ignore();
+        }
+
+        object::event(e);
     }
 
     void window::render() {

@@ -75,7 +75,7 @@ namespace deadcell::gui {
             return resizeable_;
         }
 
-        void event(const base_event &e) override;
+        void event(base_event &e) override;
         void render() override;
 
         std::string get_class_name() override { return "window()"; }

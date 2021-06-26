@@ -35,12 +35,12 @@ namespace deadcell::gui {
         object();
         virtual ~object();
 
-        virtual void event(const base_event &e) { }
+        virtual void event(base_event &e) { if (get_children().empty()) { e.accept(); } }
         virtual void layout(layout_item &overlay, layout_item &parent);
         virtual void render() { }
         virtual std::string get_class_name() { return "object()"; }
 
-        void dispatch_event(const base_event &e, const object_ptr &stay_within);
+        void dispatch_event(base_event e, const object_ptr &stay_within = nullptr);
 
         void add_child(const object_ptr &object);
         void remove_child(const object_ptr &object);

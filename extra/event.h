@@ -9,6 +9,9 @@ namespace deadcell::gui {
     public:
         enum type_e {
             invalid = 0,
+            mouse_click,
+            mouse_down,
+            mouse_up,
         };
 
         base_event() { }
@@ -24,10 +27,12 @@ namespace deadcell::gui {
             return accepted_;
         }
 
+        // Prevents events from being passed down to any children.
         void accept() {
             accepted_ = true;
         }
 
+        // Allow events to be passed down to any children.
         void ignore() {
             accepted_ = false;
         }

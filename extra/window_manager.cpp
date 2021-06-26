@@ -93,6 +93,8 @@ namespace deadcell::gui {
         }
 
         if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
+            target_window->dispatch_event(base_event::mouse_click, nullptr);
+
             if (!was_left_clicked && win) {
                 was_left_clicked = true;
                 move_to_front(win, true);         
@@ -109,25 +111,29 @@ namespace deadcell::gui {
         }
 
         if (ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
+            target_window->dispatch_event(base_event::mouse_down);
+
             if (target_window) {
                 if (is_dragging) {
-                    target_window->event(window_event::drag_start);
+                    target_window->dispatch_event(window_event::drag_start);
                 }
                 else if (is_resizing) {
-                    target_window->event(window_event::resize_start);
+                    target_window->dispatch_event(window_event::resize_start);
                 }
             }
         }
 
         if (ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
+            target_window->dispatch_event(base_event::mouse_up, nullptr);
+
             if (target_window) {
                 if (is_dragging) {
-                    target_window->event(window_event::drag_end);
+                    target_window->dispatch_event(window_event::drag_end);
                     is_dragging = false;
                 }
                 else if (is_resizing) {
                     drawing::set_cursor(ImGuiMouseCursor_Arrow);
-                    target_window->event(window_event::resize_end);
+                    target_window->dispatch_event(window_event::resize_end);
                     is_resizing = false;
                 }
             }

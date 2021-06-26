@@ -24,14 +24,18 @@ namespace deadcell::gui {
             .margins(0.0f, 0.0f, 0.0f, 8.0f);
     }
 
-    void object::dispatch_event(const base_event &e, const object_ptr &stay_within) {
+    void object::dispatch_event(base_event e, const object_ptr &stay_within) {
         auto target = shared_from_this();
+
         do {
             target->event(e);
-            target = target->parent_;
 
             if (target == stay_within) {
                 return;
+            }
+
+            for (auto &child : children_) {
+                target = child;
             }
         } while (target && !e.is_accepted());
     }
