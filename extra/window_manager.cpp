@@ -52,7 +52,7 @@ namespace deadcell::gui {
                 continue;
             }
 
-            if (input::mouse_in_bounds(win->get_postition(), win->get_size())) {
+            if (input::mouse_in_bounds(win->get_position(), win->get_size())) {
                 if (win == active_window_) {
                     return win;
                 }
@@ -82,9 +82,9 @@ namespace deadcell::gui {
         static window_ptr target_window = nullptr; // NOLINT(clang-diagnostic-exit-time-destructors)
 
         if (win) {
-            const auto bottom_right = win->get_postition() + win->get_size();
+            const auto bottom_right = win->get_position() + win->get_size();
 
-            titlebar_hovered = input::mouse_in_bounds(win->get_postition(), { win->get_size().x, win->get_titlebar_height() });
+            titlebar_hovered = input::mouse_in_bounds(win->get_position(), { win->get_size().x, win->get_titlebar_height() });
             resize_hovered = input::mouse_in_bounds(bottom_right - ImVec2(10, 10), bottom_right);
         }
 

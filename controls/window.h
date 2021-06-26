@@ -55,7 +55,7 @@ namespace deadcell::gui {
             min_size_ = size;
         }
 
-        ImVec2 get_postition() const {
+        ImVec2 get_position() const {
             return pos_;
         }
 
