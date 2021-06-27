@@ -81,7 +81,6 @@ namespace deadcell::gui {
         const window_ptr hovered_window = get_window_under_cursor();
         static window_ptr target_window = nullptr; // NOLINT(clang-diagnostic-exit-time-destructors)
 
-        static bool was_left_clicked = false;
         static bool is_dragging = false, is_resizing = false;
         static bool titlebar_hovered = false, resize_hovered = false;
 
@@ -101,8 +100,7 @@ namespace deadcell::gui {
                 hovered_window->dispatch_event(base_event::mouse_click);
             }
 
-            if (!was_left_clicked && hovered_window) {
-                was_left_clicked = true;
+            if (hovered_window) {
                 move_to_front(hovered_window, true);
 
                 if (titlebar_hovered) {
@@ -148,8 +146,6 @@ namespace deadcell::gui {
                     is_resizing = false;
                 }
             }
-
-            was_left_clicked = false;
         }
     }
 
