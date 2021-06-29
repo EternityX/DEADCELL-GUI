@@ -9,7 +9,6 @@ namespace deadcell::gui::drawing {
 		switch (draw_list) {
 		case draw_list_background: dl = ImGui::GetBackgroundDrawList(); break;
 		case draw_list_foreground: dl = ImGui::GetForegroundDrawList(); break;
-		case draw_list_overlay: dl = ImGui::GetOverlayDrawList(); break;
 		}
 	}
 

@@ -10,7 +10,6 @@ namespace deadcell::gui::drawing {
 	enum draw_list_e {
 		draw_list_background,
 		draw_list_foreground,
-		draw_list_overlay,
 	};
 
 	enum draw_flags_e {
