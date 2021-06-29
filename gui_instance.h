@@ -16,17 +16,11 @@ namespace deadcell::gui {
         std::shared_ptr<window_manager> window_manager_;
 
     public:
-        gui_instance() {
-            window_manager_ = std::make_unique<window_manager>();
+        gui_instance();
 
-            fonts::titlebar_font = platform::create_font_from_data(cerebri_sans_medium_ttf, sizeof(cerebri_sans_medium_ttf), 24.0f);
+        ~gui_instance();
 
-            initialized_ = true;
-        }
-
-        ~gui_instance() {
-
-        }
+        void set_dpi_scale(float scale);
 
         // return pointer to window manager class
         std::shared_ptr<window_manager> wm() const {

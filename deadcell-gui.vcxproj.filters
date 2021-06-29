@@ -13,7 +13,7 @@
     <ClCompile Include="extra\window_manager.cpp">
       <Filter>extra</Filter>
     </ClCompile>
-    <ClCompile Include="gui.cpp" />
+    <ClCompile Include="gui_instance.cpp" />
     <ClCompile Include="controls\object.cpp">
       <Filter>controls</Filter>
     </ClCompile>
