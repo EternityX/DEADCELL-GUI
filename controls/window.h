@@ -5,6 +5,8 @@
 namespace deadcell::gui {
     class window : public object {
     private:
+        std::string text_;
+
         bool visible_ = true;
         bool resizeable_ = true;
         bool dragging_ = false;
@@ -25,6 +27,7 @@ namespace deadcell::gui {
 
     public:
         window(std::string_view unique_id);
+        window(std::string_view text, std::string_view unique_id);
 
         void set_position_size(const point& pos, const point& size) {
             pos_ = pos;

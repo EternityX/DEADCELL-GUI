@@ -11,6 +11,11 @@ namespace deadcell::gui {
 		unique_ids_.insert(std::pair(unique_id, this));
 	}
 
+	window::window(const std::string_view text, const std::string_view unique_id)
+	    : text_(text) {
+		unique_ids_.insert(std::pair(unique_id, this));
+	}
+
 	void window::event(base_event& e) {
 		const auto& io = ImGui::GetIO();
 
@@ -64,6 +69,10 @@ namespace deadcell::gui {
 	}
 
 	void window::render() {
+		if (size_.is_empty() || !visible_) {
+			return;
+		}
+
 		// shadow
 		drawing::rect_shadow(pos_ + 2, size_ - 4, color(0, 0, 0, 255), 0.0f, 15.0f, 4.0f, drawing::draw_flags_shadow_cut_out_shape_background);
 
@@ -73,11 +82,10 @@ namespace deadcell::gui {
 		// titlebar
 		drawing::rect_filled(point(pos_.x, pos_.y + 1), point(size_.x, titlebar_height_), colors::titlebar, 4.0f, drawing::draw_flags_round_top);
 
-		const auto titlebar_text = "DEADCELL";
-		const auto title_text_size = drawing::measure_text(fonts::titlebar_font, 0.0f, 24.0f, titlebar_text);
+		const auto title_text_size = drawing::measure_text(fonts::titlebar_font, 0.0f, 24.0f, text_.c_str());
 
 		if (titlebar_height_ > title_text_size.y) {
-			drawing::text({ pos_.x + 15, pos_.y + titlebar_height_ / 2 - title_text_size.y / 2 }, colors::titlebar_text, fonts::titlebar_font, 0.0f, 0.0f, titlebar_text);
+			drawing::text({ pos_.x + 15, pos_.y + titlebar_height_ / 2 - title_text_size.y / 2 }, colors::titlebar_text, fonts::titlebar_font, 0.0f, 0.0f, text_.c_str());
 		}
 
 		// bottom titlebar border
@@ -86,7 +94,7 @@ namespace deadcell::gui {
 		// body
 		dragging_alpha_ = platform::alpha_fade(dragging_alpha_, dragging_ ? 1.0f : 0.0f, 0.111f);
 
-		const auto body_dark_color = colors::body_dark.adjust_alpha(255 - (int)(82.0f * dragging_alpha_));
+		const auto body_dark_color = colors::body_dark.adjust_alpha(255 - static_cast<int>(82.0f * dragging_alpha_));
 
 		drawing::rect_filled(point(pos_.x, pos_.y + titlebar_height_ + 1), size_ - point(0, titlebar_height_ + 1), body_dark_color, 4.0f, drawing::draw_flags_round_bottom);
 	}
