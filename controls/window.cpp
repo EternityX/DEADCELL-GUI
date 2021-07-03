@@ -61,7 +61,10 @@ namespace deadcell::gui {
 			}
 		}
 
-		if (e.type() == base_event::mouse_down) {
+		// pass base events down to any potential children.
+		if (e.type() == base_event::mouse_click 
+			|| e.type() == base_event::mouse_down
+			|| e.type() == base_event::mouse_up) {
 			e.ignore();
 		}
 
