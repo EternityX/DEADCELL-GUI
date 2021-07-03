@@ -35,7 +35,7 @@ namespace deadcell::gui {
     }
 
     void window_manager::move_to_front(const window_ptr &win, const bool make_active) {
-        if (std::find(windows_.begin(), windows_.end(), win) == windows_.end()) {
+        if (std::ranges::find(windows_, win) == windows_.end()) {
             return;
         }
 
