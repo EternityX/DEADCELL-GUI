@@ -13,6 +13,7 @@ namespace deadcell::gui {
         inline auto titlebar_text = color(199, 199, 199, 255);
 
         inline auto shadow = color(0, 0, 0, 255);
+        inline auto white = color(222, 222, 222, 255);
 
         inline auto body_dark = color(40, 42, 54, 255);
         inline auto body_darker = color(23, 25, 33, 255);

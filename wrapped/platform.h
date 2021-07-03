@@ -21,11 +21,11 @@ namespace deadcell::gui::platform {
         cursor_not_allowed,
 	};
 
-    inline float alpha_fade(float value, float target, float rate = 0.065f, float rewind_rate = 0.09f) {
+    inline float fade(float value, float target, float rate = 0.065f, float rewind_rate = 0.09f, float min = 0.0f, float max = 1.0f) {
         const auto interval = 1.0f / (target < value ? rewind_rate : rate) * ImGui::GetIO().DeltaTime;
         const auto delta = target - value;
 
-        return std::clamp(value + delta * interval, 0.0f, 1.0f);
+        return std::clamp(value + delta * interval, min, max);
     }
 
 	void set_cursor(int cursor);

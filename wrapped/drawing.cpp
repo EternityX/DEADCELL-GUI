@@ -44,6 +44,12 @@ namespace deadcell::gui::drawing {
 		dl->AddShadowRect(position, position + size, col, shadow_thickness, shadow_offset, draw_flags, rounding);
 	}
 
+	void fill_circle(const point &center, const float radius, const color& col, const int segments) {
+		assert(dl);
+
+		dl->AddCircleFilled({ center.x, center.y }, radius, col, segments);
+	}
+
 	void push_clip_rect(const point &position, const point &size, const bool intersect) {
 		assert(dl);
 

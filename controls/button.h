@@ -11,16 +11,22 @@ namespace deadcell::gui {
 
         bool visible_ = true;
         bool hovered_ = false;
-        bool auto_size_ = false;
+        bool auto_size_ = true;
         bool mouse_clicked_ = false;
 
-        float hover_alpha_;
+        float hover_alpha_ = 1.0f;
+        float shadow_thickness_ = 12.0f;
 
-        point pos_ = {25, 55};
+        point click_circle_start_;
+        float click_circle_alpha_ = 1.0f;
+        float click_circle_size_ = 0.0f;
+
+        point pos_ = { 35, 75 };
         point size_;
-        point max_size_ = {1000, 1000};
+        point max_size_ = { 1000, 1000 };
 
         std::function<void()> func_;
+
     protected:
         std::string unique_id_;
 
