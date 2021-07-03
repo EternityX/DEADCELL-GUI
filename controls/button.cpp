@@ -45,7 +45,9 @@ namespace deadcell::gui {
 
         hovered_ = input::is_in_bounds(pos_, size_);
 
-        platform::set_cursor(hovered_ ? platform::cursor_hand : platform::cursor_arrow);
+        if (hovered_) {
+            platform::set_cursor(platform::cursor_hand);
+        }
 
         hover_alpha_ = platform::alpha_fade(hover_alpha_, hovered_ ? 1.0f : 0.0f);
 
