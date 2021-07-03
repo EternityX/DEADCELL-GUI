@@ -43,4 +43,16 @@ namespace deadcell::gui::drawing {
 
 		dl->AddShadowRect(position, position + size, col, shadow_thickness, shadow_offset, draw_flags, rounding);
 	}
+
+	void push_clip_rect(const point &position, const point &size, const bool intersect) {
+		assert(dl);
+
+		dl->PushClipRect(position, { position.x + size.x, position.y + size.y }, intersect);
+	}
+
+	void pop_clip_rect() {
+		assert(dl);
+
+		dl->PopClipRect();
+	}
 }
