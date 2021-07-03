@@ -21,6 +21,7 @@ namespace deadcell::gui {
         void set_active_window(const window_ptr &win);
         void move_to_front(const window_ptr &win, bool make_active);
         window_ptr get_window_under_cursor();
+        void process_keyboard();
 
         void new_frame();
         void end_frame();
