@@ -32,9 +32,6 @@
     <ClCompile Include="wrapped\platform.cpp">
       <Filter>wrapped</Filter>
     </ClCompile>
-    <ClCompile Include="controls\textbox.cpp">
-      <Filter>controls</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gui.h" />
@@ -77,9 +74,6 @@
     </ClInclude>
     <ClInclude Include="wrapped\types.h">
       <Filter>wrapped</Filter>
-    </ClInclude>
-    <ClInclude Include="controls\textbox.h">
-      <Filter>controls</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

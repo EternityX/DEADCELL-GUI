@@ -9,9 +9,6 @@ namespace deadcell::gui {
     public:
         enum type_e {
             invalid = 0,
-            key_pressed,
-            key_down,
-            key_up,
             mouse_click,
             mouse_down,
             mouse_up,

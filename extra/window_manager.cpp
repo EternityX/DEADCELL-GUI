@@ -77,12 +77,6 @@ namespace deadcell::gui {
         return nullptr;
     }
 
-    void window_manager::process_keyboard() {
-        if (!active_window_) {
-            return;
-        }
-    }
-
     void window_manager::process_mouse() {
         const window_ptr hovered_window = get_window_under_cursor();
         static window_ptr target_window = nullptr; // NOLINT(clang-diagnostic-exit-time-destructors)
@@ -168,7 +162,6 @@ namespace deadcell::gui {
     }
 
     void window_manager::new_frame() {
-        process_keyboard();
         process_mouse();
         render();
     }

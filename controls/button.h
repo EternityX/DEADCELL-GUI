@@ -14,7 +14,7 @@ namespace deadcell::gui {
         bool auto_size_ = false;
         bool mouse_clicked_ = false;
 
-        float hover_alpha_ = 1.0f;
+        float hover_alpha_;
 
         point pos_ = {25, 55};
         point size_;
