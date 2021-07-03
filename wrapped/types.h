@@ -41,6 +41,10 @@ namespace deadcell::gui {
 			return ImVec2(std::floor(x), std::floor(y));
 		}
 
+		bool is_empty() const {
+			return x <= 0 && y <= 0 ? true : false;
+		}
+
 		// Mostly copied from imgui_internal.h line 340
 		inline point operator+(const point& rhs) const { return point(x + rhs.x, y + rhs.y); }
 		inline point operator-(const point& rhs) const { return point(x - rhs.x, y - rhs.y); }
@@ -60,9 +64,10 @@ namespace deadcell::gui {
 		inline point& operator*=(float rhs) { x *= rhs; y *= rhs; return *this; }
 		inline point& operator/=(float rhs) { x /= rhs; y /= rhs; return *this; }
 
-		bool is_empty() const {
-		    return x <= 0 && y <= 0 ? true : false;
-        }
-	};
+        bool operator>(const point &rhs) const { return x > rhs.x && y > rhs.y; }
+		bool operator<(const point &rhs) const { return x < rhs.x && y < rhs.y; }
+		bool operator>=(const point &rhs) const { return x >= rhs.x && y >= rhs.y; }
+        bool operator<=(const point &rhs) const { return x <= rhs.x &&y <= rhs.y; }
+    };
 
 }
