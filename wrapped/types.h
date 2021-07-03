@@ -59,6 +59,10 @@ namespace deadcell::gui {
 		inline point& operator-=(float rhs) { x -= rhs; y -= rhs; return *this; }
 		inline point& operator*=(float rhs) { x *= rhs; y *= rhs; return *this; }
 		inline point& operator/=(float rhs) { x /= rhs; y /= rhs; return *this; }
+
+		bool is_empty() const {
+		    return x <= 0 && y <= 0 ? true : false;
+        }
 	};
 
 }
