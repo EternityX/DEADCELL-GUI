@@ -20,7 +20,9 @@ namespace deadcell::gui {
         inline auto border_light = color(52, 53, 62, 255);
         inline auto border_dark = color(27, 28, 37, 255);
 
-        inline auto button_default = color(66, 68, 78);
+        // button
+        inline auto button_body = color(66, 68, 78, 255);
+        inline auto button_text = color(199, 199, 199, 255);
     }
 
     namespace fonts {

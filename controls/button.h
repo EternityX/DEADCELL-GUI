@@ -11,10 +11,14 @@ namespace deadcell::gui {
 
         bool visible_ = true;
         bool hovered_ = false;
+        bool auto_size_ = false;
         bool mouse_clicked_ = false;
+
+        float hover_alpha_;
 
         point pos_ = {25, 55};
         point size_;
+        point max_size_ = {1000, 1000};
 
         std::function<void()> func_;
     protected:
@@ -37,11 +41,25 @@ namespace deadcell::gui {
             size_ = size;
         }
 
+        void set_max_size(const point &max_size) {
+            max_size_ = max_size;
+        }
+
         void set_visible(const bool visible) {
             visible_ = visible;
         }
 
-        bool is_visible() const;
+        void set_auto_size(const bool auto_size) {
+            auto_size_ = auto_size;
+        }
+
+        bool is_visible() const {
+            return visible_;
+        }
+
+        bool is_auto_size() const {
+            return auto_size_;
+        }
 
         void event(base_event &e) override;
         void layout(layout_item &overlay, layout_item &parent) override;
