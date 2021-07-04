@@ -51,21 +51,6 @@ namespace deadcell::gui {
             return;
         }
 
-        hovered_ = input::is_in_bounds(pos_, size_);
-
-        if (hovered_) {
-            platform::set_cursor(platform::cursor_hand);
-        }
-
-        hover_alpha_ = platform::fade(hover_alpha_, hovered_ ? 1.0f : 0.0f);
-        shadow_thickness_ = platform::fade(shadow_thickness_, hovered_ ? 46.0f : 12.0f, 0.2f, 0.1f, 12.0f, 46.0f);
-
-        click_circle_alpha_ = platform::fade(click_circle_alpha_, 1.0f, 0.2f, 0.1f, 0.9f, 1.0f);
-        click_circle_size_ = platform::fade(click_circle_size_, 100.0f, 0.2f, 0.2f, 10.0f, 200.0f);
-
-        // shadow
-        drawing::rect_shadow(pos_ + point(5, size_.y - 0), point(size_.x - 10, 0), colors::shadow, 0.0f, shadow_thickness_, 4.0f, drawing::draw_flags_shadow_cut_out_shape_background);
-
         const auto text_size = drawing::measure_text(fonts::button_font, auto_size_ ? size_.x - 30.0f : 0.0f, 16.0f, text_.c_str());
         static bool did_resize = false;
 
@@ -81,17 +66,43 @@ namespace deadcell::gui {
             did_resize = false;
         }
 
-        // body    
-        const auto body_color = colors::button_body.adjust_alpha(255 - static_cast<int>(82.0f * hover_alpha_));
-        const auto circle_color = colors::white.adjust_alpha(255 - static_cast<int>(255.0f * click_circle_alpha_));
+        hovered_ = input::is_in_bounds(pos_, size_);
+
+        if (hovered_ && visible_ && enabled_) {
+            platform::set_cursor(platform::cursor_hand);
+        }
+
+        hover_alpha_ = platform::fade(hover_alpha_, hovered_ ? 1.0f : 0.0f);
+        shadow_thickness_ = platform::fade(shadow_thickness_, hovered_ ? 46.0f : 12.0f, 0.2f, 0.1f, 12.0f, 46.0f);
+
+        click_circle_alpha_ = platform::fade(click_circle_alpha_, 1.0f, 0.2f, 0.1f, 0.9f, 1.0f);
+        click_circle_size_ = platform::fade(click_circle_size_, 100.0f, 0.2f, 0.2f, 10.0f, 200.0f);
+
+        // shadow
+        if (enabled_) {
+            drawing::rect_shadow(pos_ + point(5, size_.y - 0), point(size_.x - 10, 0), colors::shadow, 0.0f, shadow_thickness_, 4.0f, drawing::draw_flags_shadow_cut_out_shape_background);
+        }
+
+        // body
+        const color circle_color = colors::white.adjust_alpha(255 - static_cast<int>(255.0f * click_circle_alpha_));
+        color body_color, text_color;
+        
+        if (enabled_) {
+            body_color = colors::button_body.adjust_alpha(255 - static_cast<int>(82.0f * hover_alpha_));
+            text_color = colors::button_text;
+        }
+        else {
+            body_color = colors::button_body_disabled;
+            text_color = colors::button_text_disabled;
+        }
 
         drawing::rect_filled(pos_, size_, body_color, 4.0f);
-
+        
         drawing::push_clip_rect(pos_, size_);
         {
             drawing::fill_circle({ click_circle_start_.x, click_circle_start_.y }, click_circle_size_, circle_color, 500);
-            drawing::text({ pos_.x + size_.x / 2 - text_size.x / 2, pos_.y + size_.y / 2 - text_size.y / 2 }, colors::button_text, fonts::button_font, did_resize ? size_.x - 30 : 0.0f, 16.0f, text_.c_str());
+            drawing::text({ pos_.x + size_.x / 2 - text_size.x / 2, pos_.y + size_.y / 2 - text_size.y / 2 }, text_color, fonts::button_font, did_resize ? size_.x - 30 : 0.0f, 16.0f, text_.c_str());
         }
-        drawing::pop_clip_rect();
+        drawing::pop_clip_rect();      
     }
 }

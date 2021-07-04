@@ -9,6 +9,7 @@ namespace deadcell::gui {
     private:
         std::string text_;
 
+        bool enabled_ = true;
         bool visible_ = true;
         bool hovered_ = false;
         bool auto_size_ = true;
@@ -21,7 +22,7 @@ namespace deadcell::gui {
         float click_circle_alpha_ = 1.0f;
         float click_circle_size_ = 0.0f;
 
-        point pos_ = { 35, 75 };
+        point pos_;
         point size_;
         point max_size_ = { 1000, 1000 };
 
@@ -57,6 +58,10 @@ namespace deadcell::gui {
 
         void set_auto_size(const bool auto_size) {
             auto_size_ = auto_size;
+        }
+
+        void set_enabled(const bool enabled) {
+            enabled_ = enabled;
         }
 
         bool is_visible() const {
