@@ -12,7 +12,7 @@ namespace deadcell::gui {
         bool enabled_ = true;
         bool visible_ = true;
         bool hovered_ = false;
-        bool auto_size_ = true;
+        bool auto_size_ = false;
         bool mouse_clicked_ = false;
 
         float hover_alpha_ = 1.0f;
