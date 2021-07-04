@@ -64,6 +64,18 @@ namespace deadcell::gui {
             enabled_ = enabled;
         }
 
+        void set_text(const std::string_view text) {
+            text_ = text;
+        }
+
+        point get_position() const {
+            return pos_;
+        }
+
+        point get_size() const {
+            return size_;
+        }
+
         bool is_visible() const {
             return visible_;
         }

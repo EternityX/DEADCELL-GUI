@@ -23,7 +23,9 @@ namespace deadcell::gui {
 
         // button
         inline auto button_body = color(66, 68, 78, 255);
+        inline auto button_body_disabled = color(52, 54, 65);
         inline auto button_text = color(199, 199, 199, 255);
+        inline auto button_text_disabled = color(132, 134, 140, 255);
     }
 
     namespace fonts {
