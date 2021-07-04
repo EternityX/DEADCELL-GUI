@@ -60,7 +60,7 @@ namespace deadcell::gui {
         hover_alpha_ = platform::fade(hover_alpha_, hovered_ ? 1.0f : 0.0f);
         shadow_thickness_ = platform::fade(shadow_thickness_, hovered_ ? 46.0f : 12.0f, 0.2f, 0.1f, 12.0f, 46.0f);
 
-        click_circle_alpha_ = platform::fade(click_circle_alpha_, 1.0f, 0.2f, 0.1f, 0.7f, 1.0f);
+        click_circle_alpha_ = platform::fade(click_circle_alpha_, 1.0f, 0.2f, 0.1f, 0.9f, 1.0f);
         click_circle_size_ = platform::fade(click_circle_size_, 100.0f, 0.2f, 0.2f, 10.0f, 200.0f);
 
         // shadow

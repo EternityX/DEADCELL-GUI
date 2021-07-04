@@ -95,7 +95,7 @@ namespace deadcell::gui {
 		drawing::rect_filled(point(pos_.x, pos_.y + titlebar_height_), point(size_.x, 1), colors::border_dark);
 
 		// body
-		dragging_alpha_ = platform::alpha_fade(dragging_alpha_, dragging_ ? 1.0f : 0.0f, 0.111f);
+		dragging_alpha_ = platform::fade(dragging_alpha_, dragging_ ? 1.0f : 0.0f, 0.111f);
 
 		const auto body_dark_color = colors::body_dark.adjust_alpha(255 - static_cast<int>(82.0f * dragging_alpha_));
 
