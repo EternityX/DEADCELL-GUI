@@ -1,5 +1,7 @@
 #include "button.h"
 
+#include <iostream>
+
 #include "../wrapped/drawing.h"
 #include "../wrapped/input.h"
 #include "../wrapped/platform.h"
@@ -30,7 +32,7 @@ namespace deadcell::gui {
             }
         }
 
-        if (e.type() == base_event::mouse_up) {         
+        if (e.type() == base_event::mouse_up) {
             if (hovered_ && visible_ && enabled_) {
                 func_();
                 mouse_clicked_ = false;
@@ -88,7 +90,7 @@ namespace deadcell::gui {
             drawing::fill_circle({ click_circle_start_.x, click_circle_start_.y }, click_circle_size_, circle_color, 500);
 
             const auto text_size = drawing::measure_text(fonts::button_font, auto_size_ ? size_.x - 30.0f : 0.0f, 16.0f, text_.c_str());
-            static bool did_resize = false;
+            bool did_resize = false;
 
             // resize body height to fit text
             if (auto_size_) {
@@ -97,9 +99,6 @@ namespace deadcell::gui {
 
                     size_.y = text_size.y + 30.0f;
                 }
-            }
-            else {
-                did_resize = false;
             }
 
             if (hovered_ && visible_ && enabled_) {

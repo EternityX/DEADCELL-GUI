@@ -30,7 +30,6 @@ namespace deadcell::gui {
 
     namespace fonts {
         inline ImFont *titlebar_font = nullptr;
-
         inline ImFont *button_font = nullptr;
     }
 

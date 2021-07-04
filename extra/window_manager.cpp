@@ -158,8 +158,7 @@ namespace deadcell::gui {
                 const auto draw = [](const auto &self, const std::shared_ptr<object> &obj) -> void {
                     obj->render();
 
-                    for (auto &child : obj->get_children()) {
-                        
+                    for (auto &child : obj->get_children()) {           
                         self(self, child);
                     }
                 };
