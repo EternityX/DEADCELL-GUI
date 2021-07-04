@@ -81,6 +81,6 @@ namespace deadcell::gui {
         void event(base_event &e) override;
         void render() override;
 
-        std::string get_class_name() override { return "window()"; }
+        std::string get_class_name() override { return "window"; }
     };
 }

@@ -88,6 +88,6 @@ namespace deadcell::gui {
         void layout(layout_item &overlay, layout_item &parent) override;
         void render() override;
 
-        std::string get_class_name() override { return "button()"; }
+        std::string get_class_name() override { return "button"; }
     };
 }
