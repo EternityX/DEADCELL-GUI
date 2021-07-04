@@ -27,17 +27,15 @@ namespace deadcell::gui {
     void object::dispatch_event(base_event e, const object_ptr &stay_within) {
         auto target = shared_from_this();
 
-        do {
-            target->event(e);
+        target->event(e);
 
-            if (target == stay_within) {
-                return;
-            }
+        if (target == stay_within) {
+            return;
+        }
 
-            for (auto &child : children_) {
-                target = child;
-            }
-        } while (target && !e.is_accepted());
+        for (auto &child : children_) {
+            child->dispatch_event(e, stay_within);
+        }
     }
 
     void object::add_child(const object_ptr &object) {
@@ -123,5 +121,15 @@ namespace deadcell::gui {
         }
 
         return ss.str();
+    }
+
+    std::string object::get_unique_id() {
+        for (const auto &[key, value] : unique_ids_) {
+            if (value == shared_from_this()) {
+                return key;
+            }
+        }
+
+        return "";
     }
 }

@@ -52,5 +52,6 @@ namespace deadcell::gui {
         bool is_ancestor(const object_ptr &object);
 
         std::string build_class_tree();
+        std::string get_unique_id();
     };
 }

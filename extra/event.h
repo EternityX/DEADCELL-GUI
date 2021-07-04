@@ -12,6 +12,7 @@ namespace deadcell::gui {
             mouse_click,
             mouse_down,
             mouse_up,
+            hover,
         };
 
         base_event() { }
