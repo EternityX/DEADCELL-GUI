@@ -159,7 +159,7 @@ namespace deadcell::gui {
                     obj->render();
 
                     for (auto &child : obj->get_children()) {
-                        child->render();
+                        
                         self(self, child);
                     }
                 };
