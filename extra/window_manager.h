@@ -24,5 +24,9 @@ namespace deadcell::gui {
 
         void new_frame();
         void end_frame();
+
+        std::shared_ptr<window> get_active_window() const {
+            return active_window_;
+        }
     };
 }

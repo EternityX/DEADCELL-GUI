@@ -85,6 +85,8 @@ namespace deadcell::gui {
         static bool titlebar_hovered = false, resize_hovered = false;
 
         if (hovered_window) {
+            hovered_window->dispatch_event(base_event::hover);
+
             const auto bottom_right = hovered_window->get_position() + hovered_window->get_size();
 
             titlebar_hovered = input::is_in_bounds(hovered_window->get_position(), { hovered_window->get_size().x, hovered_window->get_titlebar_height() });
@@ -152,11 +154,17 @@ namespace deadcell::gui {
     void window_manager::render() {
         for (auto &win : windows_) {
             if (win->is_visible()) {
-                win->render();
+                // Draw children recursively
+                const auto draw = [](const auto &self, const std::shared_ptr<object> &obj) -> void {
+                    obj->render();
 
-                for (auto &child : win->get_children()) {
-                    child->render();
-                }
+                    for (auto &child : obj->get_children()) {
+                        child->render();
+                        self(self, child);
+                    }
+                };
+
+                draw(draw, win);
             }
         }
     }
