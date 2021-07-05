@@ -11,6 +11,7 @@ namespace deadcell::gui {
         bool resizeable_ = true;
         bool dragging_ = false;
         bool resizing_ = false;
+        bool desktop_window_ = false;
 
         point pos_;
         point size_;
@@ -58,6 +59,10 @@ namespace deadcell::gui {
             min_size_ = size;
         }
 
+        void set_desktop_window(const bool desktop_window) {
+            desktop_window_ = desktop_window;
+        }
+
         point get_position() const {
             return pos_;
         }
@@ -80,7 +85,6 @@ namespace deadcell::gui {
 
         void event(base_event &e) override;
         void render() override;
-
         std::string get_class_name() override { return "window"; }
     };
 }

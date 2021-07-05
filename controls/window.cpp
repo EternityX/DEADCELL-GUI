@@ -87,7 +87,14 @@ namespace deadcell::gui {
 		const auto title_text_size = drawing::measure_text(fonts::titlebar_font, 0.0f, 24.0f, text_.c_str());
 
 		if (titlebar_height_ > title_text_size.y) {
-			drawing::text({ pos_.x + 15, pos_.y + titlebar_height_ / 2 - title_text_size.y / 2 }, colors::titlebar_text, fonts::titlebar_font, 0.0f, 0.0f, text_.c_str());
+			drawing::text({ pos_.x + 12, pos_.y + titlebar_height_ / 2 - title_text_size.y / 2 }, colors::titlebar_text, fonts::titlebar_font, 0.0f, 0.0f, text_.c_str());
+
+			/*constexpr float btn_radius = 7.0f;
+			drawing::fill_circle({ pos_.x + size_.x - 24, pos_.y + titlebar_height_ / 2 - btn_radius / 2 + btn_radius - 2 }, btn_radius, colors::red, static_cast<int>(btn_radius * 3));
+
+			if (!desktop_window_) {
+				drawing::fill_circle({ pos_.x + size_.x - 24 - btn_radius * 2 - 8, pos_.y + titlebar_height_ / 2 - btn_radius / 2 + btn_radius - 2 }, btn_radius, colors::yellow, static_cast<int>(btn_radius * 3));
+			}*/
 		}
 
 		// bottom titlebar border
