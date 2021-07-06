@@ -40,10 +40,6 @@ namespace deadcell::gui {
             size_ = size;
         }
 
-        void set_max_size(const point &max_size) {
-            max_size_ = max_size;
-        }
-
         void set_visible(const bool visible) {
             visible_ = visible;
         }
