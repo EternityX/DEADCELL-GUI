@@ -18,13 +18,15 @@ namespace deadcell::gui {
         float hover_alpha_ = 1.0f;
         float shadow_thickness_ = 12.0f;
 
-        point click_circle_start_;
-        float click_circle_alpha_ = 1.0f;
-        float click_circle_size_ = 0.0f;
+        struct click_circle {
+            point start;
+            float alpha = 1.0f;
+            float size = 0.0f;
+        } click_circle_;
 
         point pos_;
         point size_;
-        point max_size_ = { 1000, 1000 };
+        point max_size_ = { 250, 250 };
 
         std::function<void()> func_;
 
