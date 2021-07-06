@@ -7,9 +7,7 @@ namespace deadcell::gui {
     object::object() = default;
 
     object::~object() {
-        auto children = std::move(children_);
-
-        for (auto &child : children) {
+        for (auto children = std::move(children_); auto &child : children) {
             child->parent_ = nullptr;
         }
 
@@ -18,7 +16,7 @@ namespace deadcell::gui {
         }
     }
 
-    void object::layout(layout_item& overlay, layout_item& parent) {
+    void object::layout(layout_item &overlay, layout_item &parent) {
         root_row_ = parent
             .new_item(LAY_HFILL, LAY_ROW)
             .margins(0.0f, 0.0f, 0.0f, 8.0f);
@@ -100,8 +98,6 @@ namespace deadcell::gui {
     }
 
     std::string object::build_class_tree() {
-        std::stringstream ss;
-
         auto reverse_map = [&](const std::map<std::string, object_ptr> &map, const object_ptr &object) -> std::string {
             for (const auto &[key, value] : map) {
                 if (value == object) {
@@ -109,9 +105,10 @@ namespace deadcell::gui {
                 }
             }
 
-            return "";
+            return {};
         };
 
+        std::stringstream ss;
         ss << "0x" << std::hex << shared_from_this().get() << std::dec
             << " [" << get_class_name() << ":" << reverse_map(unique_ids_, shared_from_this()) << "]\n";
 
@@ -130,6 +127,6 @@ namespace deadcell::gui {
             }
         }
 
-        return "";
+        return {};
     }
 }
