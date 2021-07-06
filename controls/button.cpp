@@ -10,12 +10,16 @@ namespace deadcell::gui {
     button::button(const std::string_view text, std::string_view unique_id, std::function<void()> callback)
         : text_(text), func_(std::move(callback)) {
         assert(!unique_id.empty());
+        assert(callback);
+
         unique_ids_.insert(std::pair(unique_id, this));
     }
 
     button::button(const std::string_view text, std::string_view unique_id, const point size, std::function<void()> callback)
         : text_(text), size_(size), func_(std::move(callback)) {
         assert(!unique_id.empty());
+        assert(callback);
+
         unique_ids_.insert(std::pair(unique_id, this));
     }
 
