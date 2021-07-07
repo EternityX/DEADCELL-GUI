@@ -14,6 +14,7 @@ namespace deadcell::gui {
             mouse_up,
             mouse_move,
             mouse_hover,
+            max_base_event
         };
 
         base_event() { }
@@ -44,7 +45,7 @@ namespace deadcell::gui {
     private:
     public:
         enum type_e {
-            drag_start,
+            drag_start = max_base_event + 1,
             drag_end,
             resize_start,
             resize_end,
