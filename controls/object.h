@@ -15,7 +15,6 @@
 #include <vector>
 #include <xstring>
 
-
 #include "../wrapped/layout.h"
 
 namespace deadcell::gui {

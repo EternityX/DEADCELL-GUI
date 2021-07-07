@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../thirdparty/imgui/imgui.h"
-#include "../thirdparty/imgui/imgui_internal.h"
 
 #include <algorithm>
 #include <initializer_list>

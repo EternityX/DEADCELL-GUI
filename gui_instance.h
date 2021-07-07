@@ -4,6 +4,7 @@
 
 #include "extra/window_manager.h"
 #include "thirdparty/cerebri_sans_medium_ttf.h"
+#include "thirdparty/material_icons_medium_ttf.h"
 #include "wrapped/drawing.h"
 #include "wrapped/platform.h"
 

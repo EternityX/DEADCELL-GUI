@@ -12,11 +12,14 @@ namespace deadcell::gui {
         bool enabled_ = true;
         bool visible_ = true;
         bool hovered_ = false;
+        bool mouse_clicked_ = false;
 
         float hover_alpha_ = 1.0f;
 
+        float checkmark_clip_width_ = 0.0f;
+
         point pos_;
-        point size_;
+        point size_ { 16, 16 };
 
         bool *var_;
         std::function<void()> func_;
@@ -34,10 +37,6 @@ namespace deadcell::gui {
 
         void set_position(const point &pos) {
             pos_ = pos;
-        }
-
-        void set_size(const point &size) {
-            size_ = size;
         }
 
         void set_visible(const bool visible) {
