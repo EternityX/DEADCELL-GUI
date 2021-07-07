@@ -90,14 +90,14 @@ namespace deadcell::gui {
             const auto bottom_right = hovered_window->get_position() + hovered_window->get_size();
 
             titlebar_hovered = input::is_mouse_in_bounds(hovered_window->get_position(), { hovered_window->get_size().x, hovered_window->get_titlebar_height() });
-            resize_hovered = input::is_mouse_in_bounds(bottom_right - 10, bottom_right);
+            resize_hovered = input::is_mouse_in_bounds(bottom_right - 10.0f, bottom_right);
         }
 
         if ((resize_hovered && (hovered_window && hovered_window->is_resizable())) || is_resizing) {
             platform::set_cursor(platform::cursor_resize_nwse);
         }
 
-        if (input::is_mouse_clicked(ImGuiMouseButton_Left)) {
+        if (input::is_mouse_clicked(input::mouse_left)) {
             if (hovered_window) {
                 hovered_window->dispatch_event(base_event::mouse_click);
             }
@@ -116,7 +116,7 @@ namespace deadcell::gui {
             }
         }
 
-        if (input::is_mouse_down(ImGuiMouseButton_Left)) {
+        if (input::is_mouse_down(input::mouse_left)) {
             if (hovered_window) {
                 hovered_window->dispatch_event(base_event::mouse_down);
             }
@@ -131,7 +131,7 @@ namespace deadcell::gui {
             }
         }
 
-        if (input::is_mouse_released(ImGuiMouseButton_Left)) {
+        if (input::is_mouse_released(input::mouse_left)) {
             if (hovered_window) {
                 hovered_window->dispatch_event(base_event::mouse_up);
             }
