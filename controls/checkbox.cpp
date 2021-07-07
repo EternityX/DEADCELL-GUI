@@ -2,6 +2,7 @@
 
 #include "../wrapped/drawing.h"
 #include "../wrapped/input.h"
+#include "../wrapped/platform.h"
 
 #include "../thirdparty/material_icons.h"
 
@@ -23,6 +24,8 @@ void deadcell::gui::checkbox::event(base_event &e) {
     if (e.type() == base_event::mouse_up) {
         if (valid && mouse_clicked_) {
             mouse_clicked_ = false;
+            checkmark_clip_width_ = 0.0f;
+
             func_();
         }
     }
@@ -44,14 +47,17 @@ void deadcell::gui::checkbox::render() {
         return;
     }
 
+    checkmark_clip_width_ = platform::fade(checkmark_clip_width_, size_.x, 0.096f, 0.1f, 0.0f, size_.x);
+
     // Body
     if (*var_) {
         drawing::rect_filled(pos_, size_, colors::checkbox_checked_body, 1.0f);
 
-        if (fonts::icons_font)
-        const auto text_size = drawing::measure_text(fonts::icons_font, 0.0f, 16.0f, ICON_MD_CHECK);
-
-        drawing::text(pos_ , colors::body_dark, fonts::icons_font, 0.0f, 16.0f, ICON_MD_CHECK);
+        drawing::push_clip_rect(pos_, { checkmark_clip_width_, size_.y });
+        {
+            drawing::text(pos_, colors::body_dark, fonts::icons_font, 0.0f, 16.0f, ICON_MD_CHECK);
+        }
+        drawing::pop_clip_rect();
     }
     else {
         // Hacky fix to draw the outline properly.
