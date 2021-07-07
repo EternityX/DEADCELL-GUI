@@ -54,7 +54,6 @@ void deadcell::gui::checkbox::render() {
 
     checkmark_clip_width_ = platform::fade(checkmark_clip_width_, size_.x, 0.086f, 0.11f, 0.0f, size_.x);
 
-    // Body
     color check_body_color, uncheck_body_color, text_color;
 
     if (enabled_) {
@@ -68,6 +67,7 @@ void deadcell::gui::checkbox::render() {
         text_color = colors::checkbox_text_disabled;
     }
 
+    // Body
     if (static_cast<int>(255.0f * body_click_alpha_) > 0) {
         // Hacky fix to draw the outline properly.
         drawing::get_draw_list()->Flags &= ~drawing::draw_list_flags_anti_aliased_lines;
