@@ -9,6 +9,7 @@
 deadcell::gui::checkbox::checkbox(const std::string_view text, std::string_view unique_id, bool *var, std::function<void()> callback)
     : text_(text), var_(var), func_(std::move(callback)) {
     assert(!unique_id.empty());
+    assert(var);
     unique_ids_.insert(std::pair(unique_id, this));
 }
 
