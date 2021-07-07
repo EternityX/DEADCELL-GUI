@@ -32,8 +32,12 @@ namespace deadcell::gui {
 
         // Checkbox
         inline auto checkbox_unchecked_body = color(169, 170, 175);
+        inline auto checkbox_unchecked_body_disabled = color(96, 97, 106);
         inline auto checkbox_checked_body = color(255, 121, 198);
+        inline auto checkbox_checked_body_disabled = color(96, 97, 106);
+        inline auto checkbox_check = color(40, 42, 54, 255);
         inline auto checkbox_text = color(199, 199, 199, 255);
+        inline auto checkbox_text_disabled = color(122, 123, 130, 255);
     }
 
     namespace fonts {
@@ -41,6 +45,7 @@ namespace deadcell::gui {
 
         inline ImFont *titlebar_font = nullptr;
         inline ImFont *button_font = nullptr;
+        inline ImFont *checkbox_font = nullptr;
     }
 
 }

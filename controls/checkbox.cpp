@@ -32,7 +32,9 @@ void deadcell::gui::checkbox::event(base_event &e) {
 
     if (e.type() == base_event::mouse_hover) {
         if (visible_ && enabled_) {
-            hovered_ = input::is_mouse_in_bounds(pos_, size_);
+            const auto text_size = drawing::measure_text(fonts::checkbox_font, 0.0f, 16.0f, text_.c_str());
+
+            hovered_ = input::is_mouse_in_bounds(pos_, { size_.x + text_size.x + 8.0f, size_.y });
         }
     }
 
@@ -50,32 +52,56 @@ void deadcell::gui::checkbox::render() {
     hover_alpha_ = platform::fade(hover_alpha_, hovered_ ? 1.0f : 0.0f);
     body_click_alpha_ = platform::fade(body_click_alpha_, *var_ ? 0.0f : 1.0f, 0.08f, 0.08f, 0.0f);
 
-    checkmark_clip_width_ = platform::fade(checkmark_clip_width_, size_.x, 0.096f, 0.11f, 0.0f, size_.x);
+    checkmark_clip_width_ = platform::fade(checkmark_clip_width_, size_.x, 0.086f, 0.11f, 0.0f, size_.x);
 
     // Body
+    color check_body_color, uncheck_body_color, text_color;
+
+    if (enabled_) {
+        check_body_color = colors::checkbox_checked_body;
+        uncheck_body_color = colors::checkbox_unchecked_body;
+        text_color = colors::checkbox_text;
+    }
+    else {
+        check_body_color = colors::checkbox_checked_body_disabled;
+        uncheck_body_color = colors::checkbox_unchecked_body_disabled;
+        text_color = colors::checkbox_text_disabled;
+    }
+
     if (static_cast<int>(255.0f * body_click_alpha_) > 0) {
         // Hacky fix to draw the outline properly.
         drawing::get_draw_list()->Flags &= ~drawing::draw_list_flags_anti_aliased_lines;
-        drawing::rect(pos_ + 1.0f, size_ - 2.0f, colors::checkbox_unchecked_body, 0.0f, drawing::draw_flags_none, 2.0f);
+        drawing::rect(pos_ + 1.0f, size_ - 2.0f, uncheck_body_color, 0.0f, drawing::draw_flags_none, 2.0f);
         drawing::get_draw_list()->Flags |= drawing::draw_list_flags_anti_aliased_lines;
 
-        // Reproduce the corner anti aliasing effect.
-        const color corner_color = colors::checkbox_unchecked_body.adjust_alpha(255 / 2);
+        const color corner_color = uncheck_body_color.adjust_alpha(255 / 2);
 
+        // Reproduce the corner anti aliasing effect.
         drawing::rect_filled(pos_, { 1.0f, 1.0f }, corner_color); // Top left
         drawing::rect_filled({ pos_.x + size_.x - 1.0f, pos_.y }, { 1.0f, 1.0f }, corner_color); // Top Right
         drawing::rect_filled({ pos_.x, pos_.y + size_.y - 1.0f }, { 1.0f, 1.0f }, corner_color); // Bottom left
         drawing::rect_filled(pos_ + size_ - point{ 1.0f, 1.0f }, { 1.0f, 1.0f }, corner_color); // Bottom right
     }
 
-    drawing::rect_filled(pos_, size_, colors::checkbox_checked_body.adjust_alpha(255 - static_cast<int>(255.0f * body_click_alpha_)), 1.0f);
+    drawing::rect_filled(pos_, size_, check_body_color.adjust_alpha(255 - static_cast<int>(255.0f * body_click_alpha_)), 1.0f);
 
-    *var_ ? drawing::push_clip_rect(pos_, { checkmark_clip_width_, size_.y })
-    : drawing::push_clip_rect({ pos_.x - checkmark_clip_width_, pos_.y }, size_);
-    {
-        drawing::text(pos_, colors::body_dark, fonts::icons_font, 0.0f, 16.0f, ICON_MD_CHECK);
+    // Checkmark
+    if (*var_) {
+        drawing::push_clip_rect(pos_, { checkmark_clip_width_, size_.y });
     }
+    else {
+        drawing::push_clip_rect({ pos_.x - checkmark_clip_width_, pos_.y }, size_);
+    }
+
+    drawing::text(pos_, colors::checkbox_check, fonts::icons_font, 0.0f, 16.0f, ICON_MD_CHECK);
+    
     drawing::pop_clip_rect();
+
+    // Text
+    const auto text_size = drawing::measure_text(fonts::checkbox_font, 0.0f, 16.0f, text_.c_str());
+
+    drawing::text({ pos_.x + size_.x + 6.0f, pos_.y + size_.y / 2.0f - text_size.y / 2.0f },
+        text_color, fonts::checkbox_font, 0.0f, 16.0f, text_.c_str());
 
     if (hovered_ && visible_ && enabled_) {
         platform::set_cursor(platform::cursor_hand);
