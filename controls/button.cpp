@@ -97,13 +97,13 @@ namespace deadcell::gui {
                 }
             }
 
-            if (hovered_ && visible_ && enabled_) {
-                platform::set_cursor(platform::cursor_hand);
-            }
-
             drawing::text({ pos_.x + size_.x / 2.0f - text_size.x / 2.0f, pos_.y + size_.y / 2.0f - text_size.y / 2.0f }, 
                 text_color, fonts::button_font, did_resize ? size_.x - 30.0f : 0.0f, 16.0f, text_.c_str());
         }
         drawing::pop_clip_rect();
+
+        if (hovered_ && visible_ && enabled_) {
+            platform::set_cursor(platform::cursor_hand);
+        }
     }
 }

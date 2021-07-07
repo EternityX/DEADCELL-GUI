@@ -14,8 +14,8 @@ namespace deadcell::gui {
         bool hovered_ = false;
         bool mouse_clicked_ = false;
 
-        float hover_alpha_ = 1.0f;
-        float body_click_alpha = 0.0f;
+        float hover_alpha_ = 0.0f;
+        float body_click_alpha_ = 1.0f;
         float checkmark_clip_width_ = 0.0f;
 
         point pos_;
