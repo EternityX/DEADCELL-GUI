@@ -61,9 +61,9 @@ namespace deadcell::gui {
 			}
 		}
 
-		// pass base events down to any potential children.
+		// Pass base events down to any potential children.
 		if (e.type() == base_event::mouse_click || e.type() == base_event::mouse_down || e.type() == base_event::mouse_up
-			|| e.type() == base_event::hover) {
+			|| e.type() == base_event::mouse_move || e.type() == base_event::mouse_hover) {
 			e.ignore();
 		}
 

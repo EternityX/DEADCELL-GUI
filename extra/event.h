@@ -12,7 +12,8 @@ namespace deadcell::gui {
             mouse_click,
             mouse_down,
             mouse_up,
-            hover,
+            mouse_move,
+            mouse_hover,
         };
 
         base_event() { }
@@ -28,7 +29,7 @@ namespace deadcell::gui {
             return accepted_;
         }
 
-        // Prevents events from being passed down to any children.
+        // Prevent events from being passed down to any children.
         void accept() {
             accepted_ = true;
         }
@@ -43,11 +44,6 @@ namespace deadcell::gui {
     private:
     public:
         enum type_e {
-            mouse_move,
-            left_mouse_down,
-            left_mouse_up,
-            right_mouse_down,
-            right_mouse_up,
             drag_start,
             drag_end,
             resize_start,

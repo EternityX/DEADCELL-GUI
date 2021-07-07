@@ -20,7 +20,7 @@ namespace deadcell::gui {
     }
 
     void button::event(base_event &e) {
-        const bool valid = hovered_ && visible_ && enabled_;
+        const bool valid = enabled_ && visible_ && hovered_;
 
         if (e.type() == base_event::mouse_click) {
             if (valid) {
@@ -31,12 +31,12 @@ namespace deadcell::gui {
 
         if (e.type() == base_event::mouse_up) {
             if (valid && mouse_clicked_) {
-                func_();
                 mouse_clicked_ = false;
+                func_();
             }
         }
 
-        if (e.type() == base_event::hover) {
+        if (e.type() == base_event::mouse_hover) {
             if (visible_ && enabled_) {
                 hovered_ = input::is_mouse_in_bounds(pos_, size_);
             }

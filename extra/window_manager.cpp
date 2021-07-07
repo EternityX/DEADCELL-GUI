@@ -48,8 +48,6 @@ namespace deadcell::gui {
     }
 
     std::shared_ptr<window> window_manager::get_window_under_cursor() {
-        const auto &io = ImGui::GetIO();
-
         std::deque<window_ptr> windows;
 
         for (auto &win : windows_) {
@@ -84,8 +82,11 @@ namespace deadcell::gui {
         static bool is_dragging = false, is_resizing = false;
         static bool titlebar_hovered = false, resize_hovered = false;
 
+        const point current_mouse_pos = input::get_mouse_pos();
+        static point last_mouse_pos = current_mouse_pos;
+
         if (hovered_window) {
-            hovered_window->dispatch_event(base_event::hover);
+            hovered_window->dispatch_event(base_event::mouse_hover);
 
             const auto bottom_right = hovered_window->get_position() + hovered_window->get_size();
 
@@ -149,6 +150,14 @@ namespace deadcell::gui {
                 }
             }
         }
+
+        if (last_mouse_pos != current_mouse_pos) {
+            if (hovered_window) {
+                hovered_window->dispatch_event(base_event::mouse_move);
+            }
+        }
+
+        last_mouse_pos = current_mouse_pos;
     }
 
     void window_manager::render() {
