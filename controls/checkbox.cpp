@@ -47,12 +47,14 @@ void deadcell::gui::checkbox::render() {
         return;
     }
 
+    hover_alpha_ = platform::fade(hover_alpha_, hovered_ ? 1.0f : 0.0f);
+    body_click_alpha = platform::fade(body_click_alpha, *var_ ? 0.0f : 1.0f, 0.05f, 0.08f, 0.0f);
     checkmark_clip_width_ = platform::fade(checkmark_clip_width_, size_.x, 0.096f, 0.1f, 0.0f, size_.x);
+
+    drawing::rect_filled(pos_, size_, colors::checkbox_checked_body.adjust_alpha(255 - static_cast<int>(255.0f * body_click_alpha)), 1.0f);
 
     // Body
     if (*var_) {
-        drawing::rect_filled(pos_, size_, colors::checkbox_checked_body, 1.0f);
-
         drawing::push_clip_rect(pos_, { checkmark_clip_width_, size_.y });
         {
             drawing::text(pos_, colors::body_dark, fonts::icons_font, 0.0f, 16.0f, ICON_MD_CHECK);

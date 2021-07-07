@@ -7,8 +7,10 @@ namespace deadcell::gui {
 
     namespace colors {
         inline auto shadow = color(0, 0, 0, 255);
+
         inline auto white = color(222, 222, 222, 255);
         inline auto red = color(255, 85, 85, 255);
+        inline auto green = color(80, 250, 123, 255);
         inline auto yellow = color(241, 250, 140, 255);
 
         inline auto active_window_glow = color(210, 115, 138, 255);
