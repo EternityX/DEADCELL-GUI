@@ -19,6 +19,6 @@ namespace deadcell::gui::input {
 	bool is_mouse_clicked(int mouse_button, bool repeat = false);
 	bool is_mouse_down(int mouse_button);
 	bool is_mouse_released(int mouse_button);
-	bool is_in_bounds(const point& position, const point& size);
+	bool is_mouse_in_bounds(const point& position, const point& size);
 
 }

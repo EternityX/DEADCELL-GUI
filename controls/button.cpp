@@ -43,7 +43,7 @@ namespace deadcell::gui {
 
         if (e.type() == base_event::hover) {
             if (visible_ && enabled_) {
-                hovered_ = input::is_in_bounds(pos_, size_);
+                hovered_ = input::is_mouse_in_bounds(pos_, size_);
             }
         }
 

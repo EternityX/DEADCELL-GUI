@@ -57,7 +57,7 @@ namespace deadcell::gui {
                 continue;
             }
 
-            if (input::is_in_bounds(win->get_position(), win->get_size())) {
+            if (input::is_mouse_in_bounds(win->get_position(), win->get_size())) {
                 if (win == active_window_) {
                     return win;
                 }
@@ -79,7 +79,7 @@ namespace deadcell::gui {
 
     void window_manager::process_mouse() {
         const window_ptr hovered_window = get_window_under_cursor();
-        static window_ptr target_window = nullptr; // NOLINT(clang-diagnostic-exit-time-destructors)
+        static window *target_window;
 
         static bool is_dragging = false, is_resizing = false;
         static bool titlebar_hovered = false, resize_hovered = false;
@@ -89,15 +89,15 @@ namespace deadcell::gui {
 
             const auto bottom_right = hovered_window->get_position() + hovered_window->get_size();
 
-            titlebar_hovered = input::is_in_bounds(hovered_window->get_position(), { hovered_window->get_size().x, hovered_window->get_titlebar_height() });
-            resize_hovered = input::is_in_bounds(bottom_right - 10, bottom_right);
+            titlebar_hovered = input::is_mouse_in_bounds(hovered_window->get_position(), { hovered_window->get_size().x, hovered_window->get_titlebar_height() });
+            resize_hovered = input::is_mouse_in_bounds(bottom_right - 10, bottom_right);
         }
 
         if ((resize_hovered && (hovered_window && hovered_window->is_resizable())) || is_resizing) {
             platform::set_cursor(platform::cursor_resize_nwse);
         }
 
-        if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
+        if (input::is_mouse_clicked(ImGuiMouseButton_Left)) {
             if (hovered_window) {
                 hovered_window->dispatch_event(base_event::mouse_click);
             }
@@ -107,16 +107,16 @@ namespace deadcell::gui {
 
                 if (titlebar_hovered) {
                     is_dragging = true;
-                    target_window = hovered_window;
+                    target_window = hovered_window.get();
                 }
                 else if (resize_hovered && hovered_window->is_resizable()) {
                     is_resizing = true;
-                    target_window = hovered_window;
+                    target_window = hovered_window.get();
                 }
             }
         }
 
-        if (ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
+        if (input::is_mouse_down(ImGuiMouseButton_Left)) {
             if (hovered_window) {
                 hovered_window->dispatch_event(base_event::mouse_down);
             }
@@ -131,7 +131,7 @@ namespace deadcell::gui {
             }
         }
 
-        if (ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
+        if (input::is_mouse_released(ImGuiMouseButton_Left)) {
             if (hovered_window) {
                 hovered_window->dispatch_event(base_event::mouse_up);
             }
