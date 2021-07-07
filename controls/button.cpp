@@ -25,17 +25,12 @@ namespace deadcell::gui {
         if (e.type() == base_event::mouse_click) {
             if (valid) {
                 click_circle_ = { input::get_mouse_pos(), 0.0f, 30.0f };
-            }
-        }
-
-        if (e.type() == base_event::mouse_down) {
-            if (valid) {
                 mouse_clicked_ = true;
             }
         }
 
         if (e.type() == base_event::mouse_up) {
-            if (valid) {
+            if (valid && mouse_clicked_) {
                 func_();
                 mouse_clicked_ = false;
             }
