@@ -22,7 +22,7 @@ namespace deadcell::gui {
 			return { r, g, b, new_alpha };
 		}
 
-        explicit operator unsigned int() const {
+        operator unsigned int() const {
 			return IM_COL32(r, g, b, a);
 		}
 
@@ -36,7 +36,7 @@ namespace deadcell::gui {
 		point(const float val) :x(val), y(val) {}
 		point(const float x, const float y) : x(x), y(y) {}
 
-        explicit operator ImVec2() const {
+        operator ImVec2() const {
 			return ImVec2(std::floor(x), std::floor(y));
 		}
 
@@ -52,7 +52,7 @@ namespace deadcell::gui {
 		inline point operator+(const float rhs) const { return point(x + rhs, y + rhs); }
 		inline point operator-(const float rhs) const { return point(x - rhs, y - rhs); }
 		inline point operator*(const float rhs) const { return point(x * rhs, y * rhs); }
-		inline point operator/(float rhs) const { return point(x / rhs, y / rhs); }
+		inline point operator/(const float rhs) const { return point(x / rhs, y / rhs); }
 
 		inline point& operator+=(const point& rhs) { x += rhs.x; y += rhs.y; return *this; }
 		inline point& operator-=(const point& rhs) { x -= rhs.x; y -= rhs.y; return *this; }
