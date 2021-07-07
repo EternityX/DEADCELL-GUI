@@ -88,7 +88,7 @@ namespace deadcell::gui {
         
         drawing::push_clip_rect(pos_, size_);
         {
-            drawing::fill_circle({ click_circle_.start.x, click_circle_.start.y }, click_circle_.size, circle_color, 250);
+            drawing::circle_filled({ click_circle_.start.x, click_circle_.start.y }, click_circle_.size, circle_color, 250);
 
             const auto text_size = drawing::measure_text(fonts::button_font, auto_size_ ? size_.x - 30.0f : 0.0f, 16.0f, text_.c_str());
             bool did_resize = false;

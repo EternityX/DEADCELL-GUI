@@ -36,7 +36,7 @@ namespace deadcell::gui::drawing {
 	void text(const point& position, const color& col, ImFont* font, float wrap_width, float font_size, const char* text);
 	void rect_filled(const point& position, const point& size, const color& col, float rounding = 0.0f, int draw_flags = draw_flags_none);
 	void rect_shadow(const point& position, const point& size, const color& col, const point& shadow_offset, float shadow_thickness, float rounding = 0.0f, int draw_flags = draw_flags_none);
-	void fill_circle(const point &center, float radius, const color &col, int segments = 0);
+	void circle_filled(const point &center, float radius, const color &col, int segments = 0);
     void push_clip_rect(const point &position, const point &size, bool intersect = false);
     void pop_clip_rect();
 }

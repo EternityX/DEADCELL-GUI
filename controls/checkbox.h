@@ -25,7 +25,7 @@ namespace deadcell::gui {
         std::string unique_id_;
 
     public:
-        checkbox(std::string_view text, std::string_view unique_id, std::function<void()> callback = nullptr);
+        checkbox(std::string_view text, std::string_view unique_id, bool *var, std::function<void()> callback = nullptr);
 
         void set_position_size(const point &pos, const point &size) {
             pos_ = pos;
@@ -64,7 +64,6 @@ namespace deadcell::gui {
             return visible_;
         }
 
-        checkbox(std::string_view text, std::string_view unique_id, bool *var, std::function<void()> callback);
         void event(base_event &e) override;
         void layout(layout_item &overlay, layout_item &parent) override;
         void render() override;
