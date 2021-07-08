@@ -1,7 +1,5 @@
 #include "button.h"
 
-#include <iostream>
-
 #include "../wrapped/drawing.h"
 #include "../wrapped/input.h"
 #include "../wrapped/platform.h"
