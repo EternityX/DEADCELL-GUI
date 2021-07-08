@@ -5,34 +5,41 @@
 #include "../wrapped/platform.h"
 
 namespace deadcell::gui {
-    progressbar::progressbar(const std::string_view text, std::string_view unique_id,
-        std::function<void()> completed_callback, std::function<void()> tick_callback)
-        : text_(text), completed_func_(std::move(completed_callback)), tick_func_(std::move(tick_callback)) {
-
-        assert(!unique_id.empty());
-        unique_ids_.insert(std::pair(unique_id, this));
+    template <typename T>
+    static T scale(T value, T in_min, T in_max, T out_min, T out_max) {
+        return static_cast<T>((value - in_min) * (out_max - out_min) / static_cast<T>(in_max - in_min) + out_min);
     }
 
-    progressbar::progressbar(const std::string_view text, std::string_view unique_id, const float width,
-        std::function<void()> completed_callback, std::function<void()> tick_callback)
-        : text_(text), completed_func_(std::move(completed_callback)), tick_func_(std::move(tick_callback)) {
-
-        assert(!unique_id.empty());
-        unique_ids_.insert(std::pair(unique_id, this));
-        size_ = { width, 6.0f };
-    }
-
-    void progressbar::event(base_event &e) {
+    template <typename T>
+    void progressbar<T>::event(base_event &e) {
         object::event(e);
     }
 
-    void progressbar::layout(layout_item &overlay, layout_item &parent) {
+    template <typename T >
+    void progressbar<T>::layout(layout_item &overlay, layout_item &parent) {
 
     }
 
-    void progressbar::render() {
+    template <typename T>
+    void progressbar<T>::render() {
         if (!visible_) {
             return;
         }
+
+        auto progress_width = scale<T>(progress_, progress_min_, progress_max_, 0, static_cast<T>(size_.x));
+
+        drawing::push_clip_rect(pos_, size_);
+        {
+            drawing::rect_filled(pos_, size_, colors::progress_background, 3.0f);
+
+            if (static_cast<float>(progress_width) >= 3.0f) {
+                drawing::rect_filled(pos_, { static_cast<float>(progress_width), size_.y }, colors::progress_filled, 3.0f);
+            }
+        }
+        drawing::pop_clip_rect();
     }
+
+    template class progressbar<int>;
+    template class progressbar<float>;
+    template class progressbar<double>;
 }

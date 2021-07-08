@@ -4,7 +4,6 @@
 #include "wrapped/types.h"
 
 namespace deadcell::gui {
-
     namespace colors {
         inline auto shadow = color(0, 0, 0, 255);
 
@@ -38,6 +37,11 @@ namespace deadcell::gui {
         inline auto checkbox_check = color(40, 42, 54, 255);
         inline auto checkbox_text = color(199, 199, 199, 255);
         inline auto checkbox_text_disabled = color(122, 123, 130, 255);
+
+        // Progressbar
+        inline auto progress_background = color(52, 54, 65);
+        inline auto progress_filled = color(255, 121, 198);
+        inline auto progress_text = color(199, 199, 199);
     }
 
     namespace fonts {
@@ -47,5 +51,4 @@ namespace deadcell::gui {
         inline ImFont *button_font = nullptr;
         inline ImFont *checkbox_font = nullptr;
     }
-
 }
