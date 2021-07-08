@@ -63,6 +63,22 @@ namespace deadcell::gui {
             return visible_;
         }
 
+        void show() {
+            visible_ = true;
+        }
+
+        void hide() {
+            visible_ = false;
+        }
+
+        void enable() {
+            enabled_ = true;
+        }
+
+        void disable() {
+            enabled_ = false;
+        }
+
         void event(base_event &e) override;
         void layout(layout_item &overlay, layout_item &parent) override;
         void render() override;
