@@ -1,6 +1,6 @@
 #pragma once
 
-#include "thirdparty/imgui/imgui.h"
+#include "vendor/imgui/imgui.h"
 #include "wrapped/types.h"
 
 namespace deadcell::gui {

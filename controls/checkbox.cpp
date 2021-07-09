@@ -4,7 +4,7 @@
 #include "../wrapped/input.h"
 #include "../wrapped/platform.h"
 
-#include "../thirdparty/material_icons.h"
+#include "../vendor/material_icons.h"
 
 namespace deadcell::gui {
     checkbox::checkbox(const std::string_view text, std::string_view unique_id, bool *var, std::function<void()> callback)

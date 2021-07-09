@@ -44,9 +44,6 @@
     <ClInclude Include="wrapped\drawing.h">
       <Filter>wrapped</Filter>
     </ClInclude>
-    <ClInclude Include="thirdparty\layout.h">
-      <Filter>thirdparty</Filter>
-    </ClInclude>
     <ClInclude Include="controls\button.h">
       <Filter>controls</Filter>
     </ClInclude>
@@ -69,9 +66,6 @@
     <ClInclude Include="wrapped\input.h">
       <Filter>wrapped</Filter>
     </ClInclude>
-    <ClInclude Include="thirdparty\cerebri_sans_medium_ttf.h">
-      <Filter>thirdparty</Filter>
-    </ClInclude>
     <ClInclude Include="wrapped\layout.h">
       <Filter>wrapped</Filter>
     </ClInclude>
@@ -84,14 +78,20 @@
     <ClInclude Include="controls\checkbox.h">
       <Filter>controls</Filter>
     </ClInclude>
-    <ClInclude Include="thirdparty\material_icons_medium_ttf.h">
-      <Filter>thirdparty</Filter>
-    </ClInclude>
-    <ClInclude Include="thirdparty\material_icons.h">
-      <Filter>thirdparty</Filter>
-    </ClInclude>
     <ClInclude Include="controls\progressbar.h">
       <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\cerebri_sans_medium_ttf.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\layout.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\material_icons.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\material_icons_medium_ttf.h">
+      <Filter>vendor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -104,7 +104,7 @@
     <Filter Include="wrapped">
       <UniqueIdentifier>{62be3f79-1042-4c80-a71e-4951408d57c0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="thirdparty">
+    <Filter Include="vendor">
       <UniqueIdentifier>{2fe88c64-452b-4be9-9c1d-c33b2f91b4e4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

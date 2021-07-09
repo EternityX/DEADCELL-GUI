@@ -1,5 +1,5 @@
 #include "gui_instance.h"
-#include "thirdparty/material_icons.h"
+#include "vendor/material_icons.h"
 
 deadcell::gui::gui_instance::gui_instance() {
     window_manager_ = std::make_unique<window_manager>();

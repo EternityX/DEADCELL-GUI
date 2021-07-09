@@ -2,7 +2,7 @@
 
 #define LAY_FLOAT 1
 
-#include "../thirdparty/layout.h"
+#include "../vendor/layout.h"
 
 //inline std::pair<ImVec2, ImVec2> rect_to_xywh(const lay_vec4 &rect) {
 //    return std::make_pair(ImVec2(rect[0], rect[1]), ImVec2(rect[2], rect[3]));

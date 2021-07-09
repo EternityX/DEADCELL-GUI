@@ -44,10 +44,10 @@
     <ClInclude Include="extra\window_manager.h" />
     <ClInclude Include="gui.h" />
     <ClInclude Include="gui_instance.h" />
-    <ClInclude Include="thirdparty\cerebri_sans_medium_ttf.h" />
-    <ClInclude Include="thirdparty\layout.h" />
-    <ClInclude Include="thirdparty\material_icons.h" />
-    <ClInclude Include="thirdparty\material_icons_medium_ttf.h" />
+    <ClInclude Include="vendor\cerebri_sans_medium_ttf.h" />
+    <ClInclude Include="vendor\layout.h" />
+    <ClInclude Include="vendor\material_icons.h" />
+    <ClInclude Include="vendor\material_icons_medium_ttf.h" />
     <ClInclude Include="wrapped\drawing.h" />
     <ClInclude Include="wrapped\input.h" />
     <ClInclude Include="wrapped\layout.h" />
