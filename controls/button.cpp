@@ -65,6 +65,8 @@ namespace deadcell::gui {
                 colors::shadow, 0.0f, shadow_thickness_, 4.0f, drawing::draw_flags_shadow_cut_out_shape_background);
         }
 
+        drawing::rect_filled(pos_ - point(0.0f, 1.0f), size_, colors::border_light, 4.0f);
+
         // Body
         const color circle_color = colors::white.adjust_alpha(255 - static_cast<int>(255.0f * click_circle_.alpha));
         color body_color, text_color;

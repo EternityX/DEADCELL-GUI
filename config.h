@@ -17,28 +17,24 @@ namespace deadcell::gui {
         inline auto titlebar = color(30, 31, 41, 255);
         inline auto titlebar_text = color(199, 199, 199, 255);
 
-        inline auto body_dark = color(40, 42, 54, 255);
+        inline auto body_lighter = color(43, 44, 56, 255);
+        inline auto body_dark = color(30, 31, 41);
         inline auto body_darker = color(23, 25, 33, 255);
 
         inline auto border_light = color(52, 53, 62, 255);
         inline auto border_dark = color(27, 28, 37, 255);
 
         // Button
-        inline auto button_body = color(66, 68, 78, 255);
-        inline auto button_body_disabled = color(52, 54, 65);
+        inline auto button_body = color(40, 42, 54);
+        inline auto button_body_disabled = color(34, 35, 46);
         inline auto button_text = color(199, 199, 199, 255);
         inline auto button_text_disabled = color(132, 134, 140, 255);
 
         // Checkbox
-        inline auto checkbox_unchecked_body = color(169, 170, 175);
-        inline auto checkbox_unchecked_body_disabled = color(96, 97, 106);
+        inline auto checkbox_background = color(68, 71, 93);
         inline auto checkbox_checked_body = color(255, 121, 198);
-        inline auto checkbox_checked_body_disabled = color(96, 97, 106);
-        inline auto checkbox_check = color(40, 42, 54, 255);
         inline auto checkbox_text = color(199, 199, 199, 255);
         inline auto checkbox_text_disabled = color(122, 123, 130, 255);
-
-        inline auto checkbox_background = color(68, 71, 93);
 
         // Progressbar
         inline auto progress_background = color(52, 54, 65);
