@@ -25,7 +25,7 @@ namespace deadcell::gui {
         } click_circle_;
 
         point pos_;
-        point size_;
+        point size_ = { 150, 35 };
         point max_size_ = { 250, 250 };
 
         std::function<void()> func_;
