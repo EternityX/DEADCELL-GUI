@@ -27,7 +27,7 @@
     <ClCompile Include="extra\event.cpp" />
     <ClCompile Include="extra\event_manager.cpp" />
     <ClCompile Include="extra\window_manager.cpp" />
-    <ClCompile Include="gui_instance.cpp" />
+    <ClCompile Include="deadcell_gui.cpp" />
     <ClCompile Include="wrapped\drawing.cpp" />
     <ClCompile Include="wrapped\input.cpp" />
     <ClCompile Include="wrapped\layout.cpp" />
@@ -42,8 +42,8 @@
     <ClInclude Include="extra\event.h" />
     <ClInclude Include="extra\event_manager.h" />
     <ClInclude Include="extra\window_manager.h" />
-    <ClInclude Include="gui.h" />
-    <ClInclude Include="gui_instance.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="deadcell_gui.h" />
     <ClInclude Include="vendor\cerebri_sans_medium_ttf.h" />
     <ClInclude Include="vendor\layout.h" />
     <ClInclude Include="vendor\material_icons.h" />

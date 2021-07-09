@@ -13,7 +13,7 @@
     <ClCompile Include="extra\window_manager.cpp">
       <Filter>extra</Filter>
     </ClCompile>
-    <ClCompile Include="gui_instance.cpp" />
+    <ClCompile Include="deadcell_gui.cpp" />
     <ClCompile Include="controls\object.cpp">
       <Filter>controls</Filter>
     </ClCompile>
@@ -40,7 +40,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="gui.h" />
+    <ClInclude Include="config.h" />
     <ClInclude Include="wrapped\drawing.h">
       <Filter>wrapped</Filter>
     </ClInclude>
@@ -56,7 +56,7 @@
     <ClInclude Include="controls\object.h">
       <Filter>controls</Filter>
     </ClInclude>
-    <ClInclude Include="gui_instance.h" />
+    <ClInclude Include="deadcell_gui.h" />
     <ClInclude Include="extra\event_manager.h">
       <Filter>extra</Filter>
     </ClInclude>

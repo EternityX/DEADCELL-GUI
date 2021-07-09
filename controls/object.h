@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../extra/event.h"
-#include "../gui.h"
+#include "../config.h"
 
 //#define IMGUI_DEFINE_MATH_OPERATORS
 //#include <imgui.h>

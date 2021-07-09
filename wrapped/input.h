@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../gui.h"
+#include "../config.h"
 #include "types.h"
 
 namespace deadcell::gui::input {

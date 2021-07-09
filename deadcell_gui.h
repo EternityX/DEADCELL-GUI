@@ -9,24 +9,22 @@
 #include "wrapped/platform.h"
 
 namespace deadcell::gui {
-
-    class gui_instance {
+    class deadcell_gui {
     private:
         bool initialized_ = false;
 
         std::shared_ptr<window_manager> window_manager_;
 
     public:
-        gui_instance();
+        deadcell_gui();
 
-        ~gui_instance();
+        ~deadcell_gui();
 
-        void set_dpi_scale(float scale);
+        static void set_dpi_scale(float scale);
 
         // return pointer to window manager class
         std::shared_ptr<window_manager> wm() const {
             return window_manager_;
         }
     };
-
 }

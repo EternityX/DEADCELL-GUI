@@ -2,7 +2,7 @@
 
 #include <deque>
 
-#include "../gui_instance.h"
+#include "../deadcell_gui.h"
 #include "../wrapped/drawing.h"
 #include "../wrapped/input.h"
 #include "../wrapped/platform.h"
