@@ -54,38 +54,39 @@ namespace deadcell::gui {
         hover_alpha_ = platform::fade(hover_alpha_, hovered_ ? 1.0f : 0.0f);
         body_click_alpha_ = platform::fade(body_click_alpha_, *var_ ? 0.0f : 1.0f, 0.08f, 0.08f, 0.0f);
 
-        checkmark_clip_width_ = platform::fade(checkmark_clip_width_, size_.x, 0.086f, 0.11f, 0.0f, size_.x);
+        checkmark_clip_width_ = platform::fade(checkmark_clip_width_, size_.x, 0.076f, 0.11f, 0.0f, size_.x);
 
         color check_body_color, uncheck_body_color, text_color;
 
         if (enabled_) {
-            check_body_color = colors::checkbox_checked_body;
-            uncheck_body_color = colors::checkbox_unchecked_body;
+            check_body_color = colors::green;
+            uncheck_body_color = colors::checkbox_background;
             text_color = colors::checkbox_text;
         }
         else {
-            check_body_color = colors::checkbox_checked_body_disabled;
-            uncheck_body_color = colors::checkbox_unchecked_body_disabled;
+            check_body_color = colors::green;
+            uncheck_body_color = colors::checkbox_background;
             text_color = colors::checkbox_text_disabled;
         }
 
         // Body
-        if (static_cast<int>(255.0f * body_click_alpha_) > 0) {
+        //if (static_cast<int>(255.0f * body_click_alpha_) > 0) {
             // Hacky fix to draw the outline properly.
-            drawing::get_draw_list()->Flags &= ~drawing::draw_list_flags_anti_aliased_lines;
-            drawing::rect(pos_ + 1.0f, size_ - 2.0f, uncheck_body_color, 0.0f, drawing::draw_flags_none, 2.0f);
-            drawing::get_draw_list()->Flags |= drawing::draw_list_flags_anti_aliased_lines;
+            //drawing::get_draw_list()->Flags &= ~drawing::draw_list_flags_anti_aliased_lines;
+            //drawing::rect(pos_ + 1.0f, size_ - 2.0f, uncheck_body_color, 0.0f, drawing::draw_flags_none, 2.0f);
+            drawing::rect_filled(pos_, size_, uncheck_body_color, 2.0f, drawing::draw_flags_none);
+            //drawing::get_draw_list()->Flags |= drawing::draw_list_flags_anti_aliased_lines;
 
-            const color corner_color = uncheck_body_color.adjust_alpha(255 / 2);
+            //const color corner_color = uncheck_body_color.adjust_alpha(255 / 2);
 
             // Reproduce the corner anti aliasing effect.
-            drawing::rect_filled(pos_, { 1.0f, 1.0f }, corner_color); // Top left
-            drawing::rect_filled({ pos_.x + size_.x - 1.0f, pos_.y }, { 1.0f, 1.0f }, corner_color); // Top Right
-            drawing::rect_filled({ pos_.x, pos_.y + size_.y - 1.0f }, { 1.0f, 1.0f }, corner_color); // Bottom left
-            drawing::rect_filled(pos_ + size_ - point{ 1.0f, 1.0f }, { 1.0f, 1.0f }, corner_color); // Bottom right
-        }
+            //drawing::rect_filled(pos_, { 1.0f, 1.0f }, corner_color); // Top left
+            //drawing::rect_filled({ pos_.x + size_.x - 1.0f, pos_.y }, { 1.0f, 1.0f }, corner_color); // Top Right
+            //drawing::rect_filled({ pos_.x, pos_.y + size_.y - 1.0f }, { 1.0f, 1.0f }, corner_color); // Bottom left
+            //drawing::rect_filled(pos_ + size_ - point{ 1.0f, 1.0f }, { 1.0f, 1.0f }, corner_color); // Bottom right
+        //}
 
-        drawing::rect_filled(pos_, size_, check_body_color.adjust_alpha(255 - static_cast<int>(255.0f * body_click_alpha_)), 1.0f);
+        //drawing::rect_filled(pos_, size_, check_body_color.adjust_alpha(255 - static_cast<int>(255.0f * body_click_alpha_)), 1.0f);
 
         // Checkmark
         if (*var_) {
@@ -95,12 +96,12 @@ namespace deadcell::gui {
             drawing::push_clip_rect({ pos_.x - checkmark_clip_width_, pos_.y }, size_);
         }
 
-        drawing::text(pos_, colors::checkbox_check, fonts::icons_font, 0.0f, 16.0f, ICON_MD_CHECK);
+        drawing::text(pos_ + point{ 0.0f, 1.0f }, check_body_color, fonts::icons_font, 0.0f, 15.0f, ICON_MD_CHECK);
 
         drawing::pop_clip_rect();
 
         // Text
-        const auto text_size = drawing::measure_text(fonts::checkbox_font, 0.0f, 16.0f, text_.c_str());
+        const auto text_size = drawing::measure_text(fonts::checkbox_font, 0.0f, 15.0f, text_.c_str());
 
         drawing::text({ pos_.x + size_.x + 6.0f, pos_.y + size_.y / 2.0f - text_size.y / 2.0f },
             text_color, fonts::checkbox_font, 0.0f, 16.0f, text_.c_str());

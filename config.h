@@ -38,6 +38,8 @@ namespace deadcell::gui {
         inline auto checkbox_text = color(199, 199, 199, 255);
         inline auto checkbox_text_disabled = color(122, 123, 130, 255);
 
+        inline auto checkbox_background = color(68, 71, 93);
+
         // Progressbar
         inline auto progress_background = color(52, 54, 65);
         inline auto progress_filled = color(255, 121, 198);

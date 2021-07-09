@@ -1,4 +1,5 @@
 #include "deadcell_gui.h"
+
 #include "vendor/material_icons.h"
 
 namespace deadcell {
@@ -10,7 +11,7 @@ namespace deadcell {
         fonts::checkbox_font = platform::create_font_from_data(cerebri_sans_medium_ttf, sizeof(cerebri_sans_medium_ttf), 16.0f, 2);
 
         // TODO: Merge icon font with other fonts.
-        fonts::icons_font = platform::create_font_from_data(material_icons_medium_ttf, sizeof(material_icons_medium_ttf), 16.0f, 0, { ICON_MIN_MD, ICON_MAX_MD, 0 });
+        fonts::icons_font = platform::create_font_from_data(material_icons_medium_ttf, sizeof(material_icons_medium_ttf), 15.0f, 32, { ICON_MIN_MD, ICON_MAX_MD, 0 });
 
         ImGuiIO &io = ImGui::GetIO();
         io.Fonts->Build();
