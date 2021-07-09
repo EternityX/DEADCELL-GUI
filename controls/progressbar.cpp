@@ -22,7 +22,7 @@ namespace deadcell::gui {
 
     template <typename T>
     void progressbar<T>::render() {
-        if (!visible_) {
+        if (size_.is_empty() || !visible_) {
             return;
         }
 
