@@ -44,6 +44,9 @@
     <ClInclude Include="wrapped\drawing.h">
       <Filter>wrapped</Filter>
     </ClInclude>
+    <ClInclude Include="thirdparty\layout.h">
+      <Filter>thirdparty</Filter>
+    </ClInclude>
     <ClInclude Include="controls\button.h">
       <Filter>controls</Filter>
     </ClInclude>
