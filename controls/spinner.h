@@ -14,28 +14,22 @@ namespace deadcell::gui {
 
         point pos_;
 
+        color color_ = colors::pink;
         float radius_ = 25.0f;
         float thickness_ = 5.0f;
 
         template <int T>
         static float sawtooth(const float t) {
-            return std::fmodf(static_cast<float>(T) * t, 1.0f);
+            return std::fmod(static_cast<float>(T) * t, 1.0f);
         }
 
     protected:
         std::string unique_id_;
 
     public:
-        spinner(std::string_view unique_id) {
-            assert(!unique_id.empty());
-            unique_ids_.insert(std::pair(unique_id, this));
-        }
+        spinner(std::string_view unique_id);
 
-        spinner(std::string_view unique_id, const float radius)
-            : radius_(radius) {
-            assert(!unique_id.empty());
-            unique_ids_.insert(std::pair(unique_id, this));
-        }
+        spinner(std::string_view unique_id, float radius);
 
         void set_position_radius(const point pos, const float radius) {
             pos_ = pos;
@@ -60,6 +54,14 @@ namespace deadcell::gui {
 
         void set_text(const std::string_view text) {
             text_ = text;
+        }
+
+        void set_thickness(const float thickness) {
+            thickness_ = thickness;
+        }
+
+        void set_color(const color col) {
+            color_ = col;
         }
 
         point get_position() const {

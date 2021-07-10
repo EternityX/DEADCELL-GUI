@@ -21,8 +21,6 @@ public:
         init_spline();
     }
 
-    cubic_bezier(const cubic_bezier &other) = default;
-
     double sample_curve_x(const double t) const {
         // `ax t^3 + bx t^2 + cx t' expanded using Horner's rule.
         return ((ax_ * t + bx_) * t + cx_) * t;

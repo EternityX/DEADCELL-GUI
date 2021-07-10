@@ -1,30 +1,42 @@
 #include "spinner.h"
 
 #include "../wrapped/drawing.h"
+#include "../wrapped/platform.h"
 
 #include "../vendor/imgui/imgui_internal.h"
 #include "../vendor/cubic_bezier.h"
 
+static cubic_bezier fast_out_slow_in(0.4, 0.0, 0.2, 1.0);
+static float bezier(const float t) {
+    return static_cast<float>(fast_out_slow_in.solve(t));
+}
+
+constexpr static auto lerp(const float x0, const float x1) {
+    return [=](const float t) {
+        return (1.0f - t) * x0 + t * x1;
+    };
+}
+
+static float lerp(const float x0, const float x1, const float t) {
+    return lerp(x0, x1)(t);
+}
+
+static auto interval(float t0, float t1, const std::function<float(float)> &tween = lerp(0.0f, 1.0f)) {
+    return [=](const float t) {
+        return t < t0 ? 0.0f : t > t1 ? 1.0f : tween((t - t0) / (t1 - t0));
+    };
+}
+
 namespace deadcell::gui {
-    constexpr static auto lerp(const float x0, const float x1) {
-        return [=](const float t) {
-            return (1.0f - t) * x0 + t * x1;
-        };
+    spinner::spinner(std::string_view unique_id) {
+        assert(!unique_id.empty());
+        unique_ids_.insert(std::pair(unique_id, this));
     }
 
-    static float lerp(const float x0, const float x1, const float t) {
-        return lerp(x0, x1)(t);
-    }
-
-    static auto interval(float t0, float t1, const std::function<float(float)> &tween = lerp(0.0, 1.0)) {
-        return [=](const float t) {
-            return t < t0 ? 0.0f : t > t1 ? 1.0f : tween((t - t0) / (t1 - t0));
-        };
-    }
-
-    static cubic_bezier fast_out_slow_in(0.4, 0.0, 0.2, 1.0);
-    static float bezier(const float t) {
-        return static_cast<float>(fast_out_slow_in.solve(t));
+    spinner::spinner(std::string_view unique_id, const float radius)
+        : radius_(radius) {
+        assert(!unique_id.empty());
+        unique_ids_.insert(std::pair(unique_id, this));
     }
 
     void spinner::event(base_event &e) {
@@ -38,7 +50,7 @@ namespace deadcell::gui {
     void spinner::render() {
         ImGuiContext &ctx = *GImGui;
 
-        const auto center = point(pos_.x + radius_, pos_.y + radius_ + 4.0f);
+        const auto center = point(pos_.x + radius_ + 4.0f, pos_.y + radius_ + 4.0f);
 
         constexpr float start_angle = -IM_PI / 2.0f; // Start at the top
         constexpr int num_detents = 5;               // How many rotations we want before a repeat
@@ -85,6 +97,6 @@ namespace deadcell::gui {
             drawing::get_draw_list()->PathLineTo(ImVec2(center.x + std::cos(a) * radius_, center.y + std::sin(a) * radius_));
         }
 
-        drawing::get_draw_list()->PathStroke(colors::pink, 0, thickness_);
+        drawing::get_draw_list()->PathStroke(color_, 0, thickness_);
     }
 }
