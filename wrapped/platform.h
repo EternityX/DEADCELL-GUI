@@ -6,7 +6,6 @@
 #include <initializer_list>
 
 namespace deadcell::gui::platform {
-
 	enum cursor_e {
         cursor_none = -1,
         cursor_arrow = 0,
@@ -32,5 +31,4 @@ namespace deadcell::gui::platform {
 	float get_frame_time();
 
     ImFont* create_font_from_data(const void* font_data, int font_data_size, float size, int rasterizer_flags = 0, std::initializer_list<ImWchar> glyph_ranges = { });
-
 }
