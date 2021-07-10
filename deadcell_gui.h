@@ -21,15 +21,17 @@ namespace deadcell::gui {
         ~deadcell_gui();
 
         template <typename T, typename... Args>
-        std::shared_ptr<T> add(Args... args) {
+        auto add(Args... args) {
             return std::make_shared<T>(args...);
         }
 
         static void set_dpi_scale(float scale);
 
         // return pointer to window manager class
-        std::shared_ptr<window_manager> wm() const {
+        auto wm() const {
             return window_manager_;
         }
     };
+
+    std::shared_ptr<deadcell_gui> create();
 }

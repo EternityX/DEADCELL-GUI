@@ -25,6 +25,10 @@ namespace deadcell {
 
     }
 
+    std::shared_ptr<gui::deadcell_gui> gui::create() {
+        return std::make_shared<deadcell_gui>();
+    }
+
     void gui::deadcell_gui::set_dpi_scale(const float scale) {
         ImGuiIO &io = ImGui::GetIO();
         io.FontGlobalScale = scale;
