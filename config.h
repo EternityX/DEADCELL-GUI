@@ -11,6 +11,7 @@ namespace deadcell::gui {
         inline auto red = color(255, 85, 85, 255);
         inline auto green = color(80, 250, 123, 255);
         inline auto yellow = color(241, 250, 140, 255);
+        inline auto pink = color(255, 121, 198);
 
         inline auto active_window_glow = color(210, 115, 138, 255);
 
@@ -32,7 +33,6 @@ namespace deadcell::gui {
 
         // Checkbox
         inline auto checkbox_background = color(68, 71, 93);
-        inline auto checkbox_checked_body = color(255, 121, 198);
         inline auto checkbox_text = color(199, 199, 199, 255);
         inline auto checkbox_text_disabled = color(122, 123, 130, 255);
 
