@@ -76,18 +76,18 @@ namespace deadcell::gui {
 		}
 
 		// shadow
-		drawing::rect_shadow(pos_ + 2, size_ - 4, color(0, 0, 0, 255), 0.0f, 15.0f, 4.0f, drawing::draw_flags_shadow_cut_out_shape_background);
+		drawing::rect_shadow(pos_ + 2.0f, size_ - 4.0f, color(0, 0, 0), 0.0f, 15.0f, 4.0f, drawing::draw_flags_shadow_cut_out_shape_background);
 
 		// top titlebar border
-		drawing::rect_filled(pos_, { size_.x, 12 }, colors::border_light, 4.0f);
+		drawing::rect_filled(pos_, { size_.x, 12.0f }, colors::border_light, 4.0f);
 
 		// titlebar
-		drawing::rect_filled(point(pos_.x, pos_.y + 1), point(size_.x, titlebar_height_), colors::titlebar, 4.0f, drawing::draw_flags_round_top);
+		drawing::rect_filled(point(pos_.x, pos_.y + 1.0f), point(size_.x, titlebar_height_), colors::titlebar, 4.0f, drawing::draw_flags_round_top);
 
 		const auto title_text_size = drawing::measure_text(fonts::titlebar_font, 0.0f, 24.0f, text_.c_str());
 
 		if (titlebar_height_ > title_text_size.y) {
-			drawing::text({ pos_.x + 12, pos_.y + titlebar_height_ / 2 - title_text_size.y / 2 }, colors::titlebar_text, fonts::titlebar_font, 0.0f, 0.0f, text_.c_str());
+			drawing::text({ pos_.x + 12.0f, pos_.y + titlebar_height_ / 2.0f - title_text_size.y / 2.0f }, colors::titlebar_text, fonts::titlebar_font, 0.0f, 0.0f, text_.c_str());
 
 			/*constexpr float btn_radius = 7.0f;
 			drawing::circle_filled({ pos_.x + size_.x - 24, pos_.y + titlebar_height_ / 2 - btn_radius / 2 + btn_radius - 2 }, btn_radius, colors::red, static_cast<int>(btn_radius * 3));
@@ -98,13 +98,13 @@ namespace deadcell::gui {
 		}
 
 		// bottom titlebar border
-		drawing::rect_filled(point(pos_.x, pos_.y + titlebar_height_), point(size_.x, 1), colors::border_dark);
+		drawing::rect_filled(point(pos_.x, pos_.y + titlebar_height_), point(size_.x, 1.0f), colors::border_dark);
 
 		// body
 		dragging_alpha_ = platform::fade(dragging_alpha_, dragging_ ? 1.0f : 0.0f, 0.111f);
 
 		const auto body_dark_color = colors::body_dark.adjust_alpha(255 - static_cast<int>(82.0f * dragging_alpha_));
 
-		drawing::rect_filled(point(pos_.x, pos_.y + titlebar_height_ + 1), size_ - point(0, titlebar_height_ + 1), body_dark_color, 4.0f, drawing::draw_flags_round_bottom);
+		drawing::rect_filled(point(pos_.x, pos_.y + titlebar_height_ + 1.0f), size_ - point(0.0f, titlebar_height_ + 1.0f), body_dark_color, 4.0f, drawing::draw_flags_round_bottom);
 	}
 }
