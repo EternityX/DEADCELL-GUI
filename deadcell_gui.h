@@ -27,11 +27,15 @@ namespace deadcell::gui {
 
         static void set_dpi_scale(float scale);
 
-        // return pointer to window manager class
+        // Return pointer to window manager class.
         auto wm() const {
+            assert(window_manager_);
             return window_manager_;
         }
-    };
 
-    std::shared_ptr<deadcell_gui> create();
+        void new_frame() const {
+            assert(window_manager_);
+            window_manager_->new_frame();
+        }
+    };
 }
