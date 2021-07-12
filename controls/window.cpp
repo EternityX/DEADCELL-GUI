@@ -16,7 +16,16 @@ namespace deadcell::gui {
 		unique_ids_.insert(std::pair(unique_id, this));
 	}
 
-	void window::event(base_event& e) {
+    void window::center() {
+		const auto &io = ImGui::GetIO();
+
+		assert(io.DisplaySize.x > 0.0f); // center() should be called in the render loop. 
+		assert(io.DisplaySize.y > 0.0f);
+
+        pos_ = { (io.DisplaySize.x - size_.x) / 2.0f, (io.DisplaySize.y - size_.y) / 2.0f };
+    }
+
+    void window::event(base_event& e) {
 		const auto& io = ImGui::GetIO();
 
 		if (dragging_) {

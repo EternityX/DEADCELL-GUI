@@ -14,7 +14,7 @@ namespace deadcell::gui {
         bool desktop_window_ = false;
 
         point pos_;
-        point size_;
+        point size_ = { 250, 250 };
         point min_size_ = { 250, 250 };
 
         point interaction_mouse_pos_;
@@ -62,6 +62,8 @@ namespace deadcell::gui {
         void set_desktop_window(const bool desktop_window) {
             desktop_window_ = desktop_window;
         }
+
+        void center();
 
         point get_position() const {
             return pos_;
