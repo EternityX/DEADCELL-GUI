@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2021, EternityX <eternity@enevade.org>
+ *
+ * SPDX License Identifier: BSD-3-Clause
+ */
+
 #include "progressbar.h"
 
 #include "../wrapped/drawing.h"
