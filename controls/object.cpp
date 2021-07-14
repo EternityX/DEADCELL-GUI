@@ -42,15 +42,7 @@ namespace deadcell::gui {
     }
 
     void object::remove_child(const object_ptr &object) {
-        for (size_t i = 0; i < children_.size(); ++i) {
-            auto &child = children_.at(i);
-            if (child != object) {
-                continue;
-            }
-
-            child->parent_ = nullptr;
-            children_.erase(children_.begin() + i);
-        }
+        children_.erase(std::remove(children_.begin(), children_.end(), object), children_.end());
     }
 
     void object::remove_all_children() {
