@@ -68,11 +68,6 @@ namespace deadcell::gui {
             return object;
         }
 
-        /*for (auto &child : children_) {
-            if (child == object) {
-            }
-        }*/
-
         return nullptr;
     }
 

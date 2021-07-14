@@ -11,6 +11,7 @@ namespace deadcell::gui {
         : text_(text), var_(var), func_(std::move(callback)) {
         assert(!unique_id.empty());
         assert(var);
+
         unique_ids_.insert(std::pair(unique_id, this));
     }
 

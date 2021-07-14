@@ -1,5 +1,7 @@
 #include "spinner.h"
 
+#include <functional>
+
 #include "../wrapped/drawing.h"
 #include "../wrapped/platform.h"
 
