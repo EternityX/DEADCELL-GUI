@@ -1,5 +1,5 @@
 # DEADCELL GUI
-[![GitHub license](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://github.com/EternityX/DEADCELL-GUI/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-BSD-red)](https://github.com/EternityX/DEADCELL-GUI/blob/master/LICENSE)
 
 Event-driven UI library for gamehacking. Platform and rendering independent code is handled by [ImGUI](https://github.com/ocornut/imgui).
 
