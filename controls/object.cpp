@@ -62,11 +62,16 @@ namespace deadcell::gui {
     }
 
     std::shared_ptr<object> object::get_child(const object_ptr &object) {
-        for (auto &child : children_) {
-            if (child == object) {
-                return child;
-            }
+        if (std::ranges::find_if(children_, [object](object_ptr &child) {
+            return child == object;
+        }) != children_.end()) {
+            return object;
         }
+
+        /*for (auto &child : children_) {
+            if (child == object) {
+            }
+        }*/
 
         return nullptr;
     }
