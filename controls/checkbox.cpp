@@ -70,23 +70,23 @@ namespace deadcell::gui {
         }
 
         // Body
-        //if (static_cast<int>(255.0f * body_click_alpha_) > 0) {
+        if (static_cast<int>(255.0f * body_click_alpha_) > 0) {
             // Hacky fix to draw the outline properly.
-            //drawing::get_draw_list()->Flags &= ~drawing::draw_list_flags_anti_aliased_lines;
-            //drawing::rect(pos_ + 1.0f, size_ - 2.0f, uncheck_body_color, 0.0f, drawing::draw_flags_none, 2.0f);
-            drawing::rect_filled(pos_, size_, uncheck_body_color, 2.0f, drawing::draw_flags_none);
-            //drawing::get_draw_list()->Flags |= drawing::draw_list_flags_anti_aliased_lines;
+            drawing::get_draw_list()->Flags &= ~drawing::draw_list_flags_anti_aliased_lines;
+            drawing::rect(pos_ + 1.0f, size_ - 2.0f, uncheck_body_color, 0.0f, drawing::draw_flags_none, 2.0f);
+            //drawing::rect_filled(pos_, size_, uncheck_body_color, 2.0f, drawing::draw_flags_none);
+            drawing::get_draw_list()->Flags |= drawing::draw_list_flags_anti_aliased_lines;
 
-            //const color corner_color = uncheck_body_color.adjust_alpha(255 / 2);
+            const color corner_color = uncheck_body_color.adjust_alpha(255 / 2);
 
             // Reproduce the corner anti aliasing effect.
-            //drawing::rect_filled(pos_, { 1.0f, 1.0f }, corner_color); // Top left
-            //drawing::rect_filled({ pos_.x + size_.x - 1.0f, pos_.y }, { 1.0f, 1.0f }, corner_color); // Top Right
-            //drawing::rect_filled({ pos_.x, pos_.y + size_.y - 1.0f }, { 1.0f, 1.0f }, corner_color); // Bottom left
-            //drawing::rect_filled(pos_ + size_ - point{ 1.0f, 1.0f }, { 1.0f, 1.0f }, corner_color); // Bottom right
-        //}
+            drawing::rect_filled(pos_, { 1.0f, 1.0f }, corner_color); // Top left
+            drawing::rect_filled({ pos_.x + size_.x - 1.0f, pos_.y }, { 1.0f, 1.0f }, corner_color); // Top Right
+            drawing::rect_filled({ pos_.x, pos_.y + size_.y - 1.0f }, { 1.0f, 1.0f }, corner_color); // Bottom left
+            drawing::rect_filled(pos_ + size_ - point{ 1.0f, 1.0f }, { 1.0f, 1.0f }, corner_color); // Bottom right
+        }
 
-        //drawing::rect_filled(pos_, size_, check_body_color.adjust_alpha(255 - static_cast<int>(255.0f * body_click_alpha_)), 1.0f);
+        drawing::rect_filled(pos_, size_, check_body_color.adjust_alpha(255 - static_cast<int>(255.0f * body_click_alpha_)), 1.0f);
 
         // Checkmark
         if (*var_) {
@@ -96,7 +96,7 @@ namespace deadcell::gui {
             drawing::push_clip_rect({ pos_.x - checkmark_clip_width_, pos_.y }, size_);
         }
 
-        drawing::text(pos_ + point{ 0.0f, 1.0f }, check_body_color, fonts::icons_font, 0.0f, 15.0f, ICON_MD_CHECK);
+        drawing::text(pos_ + point{ 0.0f, 1.0f }, colors::body_dark, fonts::icons_font, 0.0f, 15.0f, ICON_MD_CHECK);
 
         drawing::pop_clip_rect();
 
