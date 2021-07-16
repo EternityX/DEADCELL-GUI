@@ -103,7 +103,7 @@ namespace deadcell::gui {
             drawing::push_clip_rect({ pos_.x - checkmark_clip_width_, pos_.y }, size_);
         }
 
-        drawing::text(pos_ + point{ 0.0f, 1.0f }, colors::body_dark, fonts::icons_font, 0.0f, 15.0f, ICON_MD_CHECK);
+        drawing::text(pos_, colors::body_dark, fonts::icons_font, 0.0f, 15.0f, ICON_MD_CHECK);
 
         drawing::pop_clip_rect();
 
