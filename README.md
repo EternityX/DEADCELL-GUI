@@ -48,3 +48,15 @@ main_window->add_child(checkbox1);
 gui::drawing::set_draw_list(gui::drawing::draw_list_foreground);
 dc_gui->new_frame();
 ```
+
+## `imconfig.h`
+Here are some recommended options to enable/disable in `imconfig.h`.
+
+```cpp
+#define IMGUI_DISABLE_OBSOLETE_FUNCTIONS
+#define IMGUI_DISABLE_DEMO_WINDOWS
+#define IMGUI_DISABLE_METRICS_WINDOW
+#define IMGUI_DISABLE_FILE_FUNCTIONS
+#define IMGUI_USE_WCHAR32
+#define IMGUI_ENABLE_FREETYPE
+```
