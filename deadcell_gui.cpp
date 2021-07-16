@@ -34,6 +34,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace deadcell {
     gui::deadcell_gui::deadcell_gui() {
+        IMGUI_CHECKVERSION();
+
         window_manager_ = std::make_unique<window_manager>();
 
         fonts::titlebar_font = platform::create_font_from_data(cerebri_sans_medium_ttf, sizeof(cerebri_sans_medium_ttf), 24.0f);
@@ -51,9 +53,7 @@ namespace deadcell {
         initialized_ = true;
     }
 
-    gui::deadcell_gui::~deadcell_gui() {
-
-    }
+    gui::deadcell_gui::~deadcell_gui() = default;
 
     void gui::deadcell_gui::set_dpi_scale(const float scale) {
         ImGuiIO &io = ImGui::GetIO();
