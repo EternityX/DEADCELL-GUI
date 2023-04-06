@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2021, EternityX (eternity@enevade.org)
+Copyright (c) 2021, EternityX (jeramie@protonmail.com)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
