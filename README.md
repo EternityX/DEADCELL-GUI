@@ -1,3 +1,8 @@
+# Notice
+Unfortunately the DEADCELL 'remake' project was never finished, therefore this GUI is lacking a lot of features. I believe it has a good base to build from into something nice.
+
+It features some nice things such as window managing, event handling, and some other small things.
+
 # DEADCELL GUI
 [![GitHub license](https://img.shields.io/badge/license-BSD-red)](https://github.com/EternityX/DEADCELL-GUI/blob/master/LICENSE)
 
