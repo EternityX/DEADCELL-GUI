@@ -64,8 +64,12 @@ Here are some recommended options to enable/disable in `imconfig.h`.
 #define IMGUI_ENABLE_FREETYPE
 ```
 
-## Design prototypes
+# Design prototypes
+
 Below are some bonus design prototypes I made which I intended to use for the DEADCELL project, please note that this is not actually included within this repository and is merely a design.
+
+
+
 ![image](https://user-images.githubusercontent.com/4403000/230327126-c4c0a408-07c5-4616-9100-14e13b10fc75.png)
 
 
