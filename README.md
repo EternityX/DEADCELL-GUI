@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="500" height="250" src="https://i.imgur.com/cEwKoeV.png">
+</p>
+
 # Notice
 Unfortunately the DEADCELL 'remake' was never finished, therefore this GUI is lacking a lot of features. I believe it is a good base to build from into something nice. It features some nice things such as window managing, event handling, and some other small things.
 
