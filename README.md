@@ -8,7 +8,7 @@ Unfortunately the DEADCELL 'remake' was never finished, therefore this GUI is la
 # DEADCELL GUI
 [![GitHub license](https://img.shields.io/badge/license-BSD3-red)](https://github.com/EternityX/DEADCELL-GUI/blob/master/LICENSE)
 
-Event-driven UI library for gamehacking. Platform and rendering independent code is handled by [ImGUI](https://github.com/ocornut/imgui).
+Event-driven UI library for gamehacking. Platform and rendering independent code is handled by [ImGui](https://github.com/ocornut/imgui).
 
 ## Setup
 Clone the project and submodules.
