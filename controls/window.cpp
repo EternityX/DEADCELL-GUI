@@ -14,12 +14,12 @@
 
 namespace deadcell::gui {
 	window::window(const std::string_view unique_id) {
-		unique_ids_.insert(std::pair(unique_id, this));
+		// unique_ids_.insert(std::pair(unique_id, this));
 	}
 
 	window::window(const std::string_view text, const std::string_view unique_id)
 	    : text_(text) {
-		unique_ids_.insert(std::pair(unique_id, this));
+		// unique_ids_.insert(std::pair(unique_id, this));
 	}
 
     void window::center() {
