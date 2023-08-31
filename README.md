@@ -78,7 +78,5 @@ Additional note: The website and/or software included within https://perime.de/ 
 
 ![image](https://user-images.githubusercontent.com/4403000/230327126-c4c0a408-07c5-4616-9100-14e13b10fc75.png)
 
-![image](https://github.com/EternityX/DEADCELL-GUI/assets/4403000/ef5b195b-aabb-4c57-a6be-ebaaf4d31ae6)
-
 https://user-images.githubusercontent.com/4403000/230328040-339e8fe2-56c5-4dd9-8751-1960c956cc85.mp4
 
