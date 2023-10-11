@@ -74,7 +74,7 @@ Below are some bonus design prototypes I made which I intended to use for the DE
 
 If you bought a menu design looking like the two prototypes below, thinking it was original, you got scammed.
 
-### I (EternityX) do not permit others to use my intellectual property (DEADCELL), or other identifying marks or designs included (this includes whole imitations). You may also not cover or obscure any part of the designs. Any other intellectual propery such as the skin images (found in the skins tab) or artwork (found within the scripts tab) of the design are not my property and is fair-use. This notice can be changed at any time.
+### I (EternityX) do not permit others to use my intellectual property (DEADCELL), or other identifying marks or designs (this includes whole imitations). You may also not cover or obscure any part of the designs. Any other intellectual propery such as the skin images (found in the skins tab) or artwork (found within the scripts tab) of the design are not my property and is fair-use. This notice can be changed at any time.
 
 Additional note: The website and/or software included within https://millionware.vip/ and https://perime.de/ were given strict permission to use the design (this does not include any DEADCELL intellectual property).
 
