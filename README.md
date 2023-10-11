@@ -72,9 +72,11 @@ Here are some recommended options to enable/disable in `imconfig.h`.
 
 Below are some bonus design prototypes I made which I intended to use for the DEADCELL project, please note that this is not actually included within this repository and is merely a design.
 
-### I (EternityX) do not permit others to use intellectual property (DEADCELL), or other identifying marks or designs included (this includes whole imitations). You may also not cover or obscure any part of the designs. Please note that this notice is only in regards to the images and videos posted below. Any other intellectual propery such as the skin images (found in the skins tab) or artwork (found within the scripts tab) of the design is not my property and is used with fair-use. This notice can be changed at any time.
+If you bought a menu design looking like the two prototypes below, thinking it was original, you got scammed.
 
-Additional note: The website and/or software included within https://perime.de/ and https://millionware.vip/ were given strict permission to use the designs (this does not include intellectual property).
+### I (EternityX) do not permit others to use my intellectual property (DEADCELL), or other identifying marks or designs included (this includes whole imitations). You may also not cover or obscure any part of the designs. Any other intellectual propery such as the skin images (found in the skins tab) or artwork (found within the scripts tab) of the design is not my property and is used with fair-use. This notice can be changed at any time.
+
+Additional note: The website and/or software included within https://millionware.vip/ and https://perime.de/ were given strict permission to use the design (this does not include any DEADCELL intellectual property).
 
 ![image](https://user-images.githubusercontent.com/4403000/230327126-c4c0a408-07c5-4616-9100-14e13b10fc75.png)
 
