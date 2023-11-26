@@ -76,8 +76,6 @@ If you bought a menu design looking like the two prototypes below, thinking it w
 
 ### I (EternityX) do not permit others to use my intellectual property (DEADCELL), or other identifying marks or designs (this includes whole imitations). You may also not cover or obscure any part of the designs. Any other intellectual propery such as the skin images (found in the skins tab) or artwork (found within the scripts tab) of the design are not my property and is fair-use. This notice can be changed at any time.
 
-Additional note: The website and/or software included within https://millionware.vip/ and https://perime.de/ were given strict permission to use the design (this does not include any DEADCELL intellectual property).
-
 ![image](https://user-images.githubusercontent.com/4403000/230327126-c4c0a408-07c5-4616-9100-14e13b10fc75.png)
 
 https://user-images.githubusercontent.com/4403000/230328040-339e8fe2-56c5-4dd9-8751-1960c956cc85.mp4
