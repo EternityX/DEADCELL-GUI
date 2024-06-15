@@ -7,7 +7,6 @@ Since I've been getting messages about 1:1 copies of the designs shown at the en
 
 _NO_ cheats have explicit permission to use the designs, this includes but not limited to:
 - Aworex
-- Millionware
 
 If you see other copies, feel free to open an issue and I'll publicly shame them on this list as well.
 
